@@ -1,0 +1,17 @@
+{
+  "name": "fullstack-event-list-app",
+  "version": "1.0.0",
+  "scripts": {
+    "prepare": "husky install && cd backend && npm install && cd .. && cd frontend && npm install",
+    "start-fe": "cd frontend && npm start",
+    "start-be": "cd backend && npm run start",
+    "start-dev-be": "cd backend && npm run start-dev",
+    "test": "cd frontend && npm run test && cd .. && cd backend && npm run test"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4"
+  },
+  "author": "Piotr Rynio",
+  "dependencies": {
+  }
+}

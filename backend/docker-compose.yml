@@ -1,0 +1,16 @@
+version: '4.4'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:5000"
+  my_app_mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: test
+
+volumes:
+  my_app_mongodb:
