@@ -1,12 +1,13 @@
 import Failure = CommandResult.Failure;
 import { CommandResult } from '../../../shared/Module/core/application/command/CommandResult';
-import { testRegistrationModule } from './testRegistrationModule';
+import {testRegistrationsModule} from "./testRegistrationsModule";
+
 
 describe('Registration | Register', () => {
   it('given not existing registered item, when register, then registration were added', async () => {
     //Given
     const currentTime = new Date();
-    const registrationModule = testRegistrationModule(currentTime);
+    const registrationModule = testRegistrationsModule(currentTime);
     const registrationId = 'testRegistrationId';
     const firstName = 'testFirstName';
     const secondName = 'testSecondName';
@@ -24,7 +25,7 @@ describe('Registration | Register', () => {
   it('given not existing registered item, when register with invalid email, then throw error', async () => {
     //Given
     const currentTime = new Date();
-    const registrationModule = testRegistrationModule(currentTime);
+    const registrationModule = testRegistrationsModule(currentTime);
     const registrationId = 'testRegistrationId';
     const firstName = 'testFirstName';
     const secondName = 'testSecondName';

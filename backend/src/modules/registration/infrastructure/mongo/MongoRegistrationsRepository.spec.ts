@@ -1,7 +1,7 @@
 import { MongoTestSupport } from '../../../../test-support/module/shared/infrastructure/MongooseTestSupport';
 import { RegistrationRepositoryTestCases } from '../RegistrationsRepositoryTestCases';
 
-describe('TournamentDetailsRepository', () => {
+describe('RegistrationsRepository', () => {
   RegistrationRepositoryTestCases({
     name: 'MongoDb Implementation',
     repositoryFactory: () => new MongoRegistrationRepository(),

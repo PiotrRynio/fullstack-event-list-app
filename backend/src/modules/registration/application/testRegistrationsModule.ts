@@ -1,10 +1,11 @@
 import { TestModuleCore, testModuleCore } from '../../../test-support/module/shared/core/TestModuleCore';
-import { RegistrationModuleCore } from '../RegistrationModuleCore';
+import {RegistrationsModuleCore} from "../RegistrationsModuleCore";
 
-export function testRegistrationModule(currentTime: Date): TestModuleCore {
+
+export function testRegistrationsModule(currentTime: Date): TestModuleCore {
   const registrationRepository = new InMemoryRegistrationRepository();
 
   return testModuleCore((commandBus, eventBus, queryBus) =>
-    RegistrationModuleCore(eventBus, commandBus, () => currentTime, registrationRepository),
+    RegistrationsModuleCore(eventBus, commandBus, () => currentTime, registrationRepository),
   );
 }

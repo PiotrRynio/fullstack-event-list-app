@@ -4,7 +4,7 @@ import { CurrentTimeProvider } from '../../shared/Module/core/CurrentTimeProvide
 import { ModuleCore } from '../../shared/Module/core/ModuleCore';
 import { EntityIdGenerator } from '../../shared/Module/core/application/EntityIdGenerator';
 
-export function RegistrationModuleCore(
+export function RegistrationsModuleCore(
   eventPublisher: DomainEventPublisher,
   commandPublisher: CommandPublisher,
   currentTimeProvider: CurrentTimeProvider,
