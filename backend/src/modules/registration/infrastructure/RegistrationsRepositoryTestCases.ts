@@ -2,15 +2,16 @@ import { DatabaseTestSupport } from '../../../test-support/module/shared/infrast
 import { EntityIdGenerator } from '../../../shared/Module/core/application/EntityIdGenerator';
 import { UuidEntityIdGenerator } from '../../../shared/Module/infrastructure/core/application/UuidEntityIdGenerator';
 import { Registration } from '../domain/Registration';
+import { RegistrationsRepository } from '../application/RegistrationsRepository';
 
 export function RegistrationRepositoryTestCases(props: {
   name: string;
-  repositoryFactory: () => RegistrationRepository;
+  repositoryFactory: () => RegistrationsRepository;
   databaseTestSupport: DatabaseTestSupport;
 }): void {
   return describe(props.name, () => {
     const entityIdGenerator: EntityIdGenerator = new UuidEntityIdGenerator();
-    let repository: RegistrationRepository;
+    let repository: RegistrationsRepository;
 
     beforeAll(async () => {
       await props.databaseTestSupport.openConnection();
