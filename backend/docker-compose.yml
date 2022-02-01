@@ -14,6 +14,3 @@ services:
       - "27020:27017"
     environment:
       MONGO_INITDB_DATABASE: fullstack_event_list_app_mongo_db
-
-volumes:
-  my_app_mongodb:

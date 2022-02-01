@@ -6,12 +6,12 @@
     "start-fe": "cd frontend && npm start",
     "start-be": "cd backend && npm run start",
     "start-dev-be": "cd backend && npm run start-dev",
-    "test": "cd frontend && npm run test && cd .. && cd backend && npm run test"
+    "test": "cd frontend && npm run test && cd .. && cd backend && npm run test",
+    "docker": "docker-compose -f docker-compose.yml up"
   },
   "devDependencies": {
     "husky": "^7.0.4"
   },
   "author": "Piotr Rynio",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
