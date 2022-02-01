@@ -4,6 +4,8 @@ import { CurrentTimeProvider } from '../../shared/Module/core/CurrentTimeProvide
 import { ModuleCore } from '../../shared/Module/core/ModuleCore';
 import { EntityIdGenerator } from '../../shared/Module/core/application/EntityIdGenerator';
 import { RegistrationsRepository } from './application/RegistrationsRepository';
+import { RegisterCommand } from './application/RegisterCommand';
+import { RegisterCommandHandler } from './application/RegisterCommandHandler';
 
 export function RegistrationsModuleCore(
   eventPublisher: DomainEventPublisher,
@@ -13,7 +15,12 @@ export function RegistrationsModuleCore(
   repository: RegistrationsRepository,
 ): ModuleCore {
   return {
-    commandHandlers: [],
+    commandHandlers: [
+      {
+        commandType: RegisterCommand,
+        handler: new RegisterCommandHandler(eventPublisher, currentTimeProvider, repository, entityIdGenerator),
+      },
+    ],
     eventHandlers: [],
     queryHandlers: [],
   };
