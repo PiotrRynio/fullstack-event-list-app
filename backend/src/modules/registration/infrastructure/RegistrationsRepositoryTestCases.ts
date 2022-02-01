@@ -1,3 +1,4 @@
+import 'jest-extended';
 import { DatabaseTestSupport } from '../../../test-support/module/shared/infrastructure/DatabaseTestSupport';
 import { EntityIdGenerator } from '../../../shared/Module/core/application/EntityIdGenerator';
 import { UuidEntityIdGenerator } from '../../../shared/Module/infrastructure/core/application/UuidEntityIdGenerator';
