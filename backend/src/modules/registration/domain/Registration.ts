@@ -23,7 +23,7 @@ export class Registration {
   }
 }
 
-export function addRegistration(
+export function registerNewRecord(
   currentTime: Date,
   entityId: string,
   command: { firstName: string; secondName: string; userEmail: string; userEventData: Date },
