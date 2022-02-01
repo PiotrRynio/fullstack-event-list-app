@@ -1,7 +1,11 @@
 import React from 'react';
+import { Home } from '../Home/Home';
+import { Wrapper } from './App.styles';
 
-function App() {
-  return <div>My App</div>;
-}
-
-export default App;
+export const App = () => {
+  return (
+    <Wrapper>
+      <Home />
+    </Wrapper>
+  );
+};
