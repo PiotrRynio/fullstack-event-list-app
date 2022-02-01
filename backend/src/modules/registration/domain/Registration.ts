@@ -30,6 +30,8 @@ export function registerNewRecord(
 ): DomainCommandResult<Registration> {
   const registrationId = entityId;
 
+  // TODO: Email and data validation!
+
   const newRegistrationWasSavedEvent = new NewRegistrationWasSavedEvent({
     occurredAt: currentTime,
     registrationId: registrationId,
