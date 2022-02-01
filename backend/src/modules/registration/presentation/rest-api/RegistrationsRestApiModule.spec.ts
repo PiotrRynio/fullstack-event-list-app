@@ -6,29 +6,41 @@ import { QueryPublisherMock } from '../../../../test-support/module/shared/core/
 import { Registration } from '../../domain/Registration';
 import { RegistrationsRestApiModule } from './RegistrationsRestApiModule';
 import { RegisterCommand } from '../../application/RegisterCommand';
+import { FindAllRegistrationsQuery } from '../../application/FindAllRegistrationsQuery';
+import { PostCreateRegistrationRequestBody } from './request/PostCreateRegistrationRequestBody';
 
 describe('Registration REST API', () => {
-  const registrationDto = {
-    firstName: 'testFirstName',
-    secondName: 'testSecondName',
-    userEmail: 'testUserEmail@test.com',
-    userEventData: new Date(),
+  const currentTime1 = new Date();
+  const currentTime2 = new Date();
+
+  const postCreateRegistrationRequestBody1: PostCreateRegistrationRequestBody = {
+    firstName: 'testFirstName1',
+    secondName: 'testSecondName1',
+    userEmail: 'testUserEmail1@test.com',
+    userEventData: `${currentTime1}`,
+  };
+
+  const postCreateRegistrationRequestBody2: PostCreateRegistrationRequestBody = {
+    firstName: 'testFirstName2',
+    secondName: 'testSecondName2',
+    userEmail: 'testUserEmail2@test.com',
+    userEventData: `${currentTime2}`,
   };
 
   const testRegistration1: Registration = {
     registrationId: 'testId1',
     firstName: 'testFirstName1',
     secondName: 'testSecondName1',
-    userEmail: 'testUserEmail@test1.com',
-    userEventData: new Date(),
+    userEmail: 'testUserEmail1@test.com',
+    userEventData: currentTime1,
   };
 
   const testRegistration2: Registration = {
     registrationId: 'testId2',
     firstName: 'testFirstName2',
     secondName: 'testSecondName2',
-    userEmail: 'testUserEmail@test2.com',
-    userEventData: new Date(),
+    userEmail: 'testUserEmail2@test.com',
+    userEventData: currentTime2,
   };
 
   it('POST /rest-api/registrations | when command success', async () => {
@@ -37,12 +49,14 @@ describe('Registration REST API', () => {
     const { agent } = testModuleRestApi(RegistrationsRestApiModule, { commandPublisher });
 
     //When
-    const { body, status } = await agent.post('/rest-api/registrations').send(registrationDto);
+    const { body, status } = await agent.post('/rest-api/registrations').send(postCreateRegistrationRequestBody1);
 
     //Then
-    expect(commandPublisher.executeCalls).toBeCalledWith(new RegisterCommand(registrationDto));
+    expect(commandPublisher.executeCalls).toBeCalledWith(
+      new RegisterCommand(fromRequestBody(postCreateRegistrationRequestBody1)),
+    );
     expect(status).toBe(StatusCodes.CREATED);
-    expect(body).toStrictEqual(registrationDto);
+    expect(body).toStrictEqual(postCreateRegistrationRequestBody1);
   });
 
   it('POST /rest-api/registrations | when command failure', async () => {
@@ -51,10 +65,12 @@ describe('Registration REST API', () => {
     const { agent } = testModuleRestApi(RegistrationsRestApiModule, { commandPublisher });
 
     //When
-    const { body, status } = await agent.post('/rest-api/registrations').send(registrationDto);
+    const { body, status } = await agent.post('/rest-api/registrations').send(postCreateRegistrationRequestBody1);
 
     //Then
-    expect(commandPublisher.executeCalls).toBeCalledWith(new RegisterCommand(registrationDto));
+    expect(commandPublisher.executeCalls).toBeCalledWith(
+      new RegisterCommand(fromRequestBody(postCreateRegistrationRequestBody1)),
+    );
     expect(status).toBe(StatusCodes.BAD_REQUEST);
     expect(body).toStrictEqual({ message: 'Email is not correct!' });
   });
@@ -71,10 +87,27 @@ describe('Registration REST API', () => {
     const { body, status } = await agent.get('/rest-api/registrations').send();
 
     //Then
-    expect(queryPublisher.executeCalls).toBeCalledWith(new FindAllRegistrations());
+    expect(queryPublisher.executeCalls).toBeCalledWith(new FindAllRegistrationsQuery());
     expect(status).toBe(StatusCodes.OK);
     expect(body).toStrictEqual({
-      items: [testRegistration1, testRegistration2],
+      registrations: [
+        { ...postCreateRegistrationRequestBody1, registrationId: 'testId1' },
+        { ...postCreateRegistrationRequestBody2, registrationId: 'testId2' },
+      ],
     });
   });
 });
+
+const fromRequestBody = ({
+  firstName,
+  secondName,
+  userEmail,
+  userEventData,
+}: PostCreateRegistrationRequestBody): Registration =>
+  new Registration({
+    registrationId: 'testId',
+    firstName,
+    secondName,
+    userEmail,
+    userEventData: new Date(userEventData),
+  });

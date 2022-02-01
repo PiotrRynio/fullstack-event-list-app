@@ -11,6 +11,6 @@ export function RegistrationsRestApiModule(
 ): ModuleRestApi {
   return {
     router: registrationsRouter(commandPublisher, eventPublisher, queryPublisher),
-    path: '/comments',
+    path: '/registrations',
   };
 }

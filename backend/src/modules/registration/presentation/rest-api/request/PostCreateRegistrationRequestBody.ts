@@ -3,6 +3,6 @@ export class PostCreateRegistrationRequestBody {
     readonly firstName: string,
     readonly secondName: string,
     readonly userEmail: string,
-    readonly userEventData: Date,
+    readonly userEventData: string,
   ) {}
 }

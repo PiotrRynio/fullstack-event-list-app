@@ -6,6 +6,8 @@ import { EntityIdGenerator } from '../../shared/Module/core/application/EntityId
 import { RegistrationsRepository } from './application/RegistrationsRepository';
 import { RegisterCommand } from './application/RegisterCommand';
 import { RegisterCommandHandler } from './application/RegisterCommandHandler';
+import { FindAllRegistrationsQueryHandler } from './application/FindAllRegistrationsQueryHandler';
+import { FindAllRegistrationsQuery } from './application/FindAllRegistrationsQuery';
 
 export function RegistrationsModuleCore(
   eventPublisher: DomainEventPublisher,
@@ -22,6 +24,11 @@ export function RegistrationsModuleCore(
       },
     ],
     eventHandlers: [],
-    queryHandlers: [],
+    queryHandlers: [
+      {
+        queryType: FindAllRegistrationsQuery,
+        handler: new FindAllRegistrationsQueryHandler(repository),
+      },
+    ],
   };
 }
