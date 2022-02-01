@@ -11,7 +11,7 @@ services:
     image: mongo:5.0.6
     restart: always
     ports:
-      - "27017:27017"
+      - "27020:27017"
     environment:
       MONGO_INITDB_DATABASE: fullstack_event_list_app_mongo_db
 
