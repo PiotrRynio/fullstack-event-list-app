@@ -4,6 +4,8 @@ import { CommandResult } from '../../../../shared/Module/core/application/comman
 import { testModuleRestApi } from '../../../../test-support/module/shared/presentation/rest-api/TestModuleRestApi';
 import { QueryPublisherMock } from '../../../../test-support/module/shared/core/QueryPublisherMock';
 import { Registration } from '../../domain/Registration';
+import { RegistrationsRestApiModule } from './RegistrationsRestApiModule';
+import { RegisterCommand } from '../../application/RegisterCommand';
 
 describe('Registration REST API', () => {
   const registrationDto = {
@@ -38,7 +40,7 @@ describe('Registration REST API', () => {
     const { body, status } = await agent.post('/rest-api/registrations').send(registrationDto);
 
     //Then
-    expect(commandPublisher.executeCalls).toBeCalledWith(new RegisterCommend(registrationDto));
+    expect(commandPublisher.executeCalls).toBeCalledWith(new RegisterCommand(registrationDto));
     expect(status).toBe(StatusCodes.CREATED);
     expect(body).toStrictEqual(registrationDto);
   });
@@ -52,7 +54,7 @@ describe('Registration REST API', () => {
     const { body, status } = await agent.post('/rest-api/registrations').send(registrationDto);
 
     //Then
-    expect(commandPublisher.executeCalls).toBeCalledWith(new RegisterCommend(registrationDto));
+    expect(commandPublisher.executeCalls).toBeCalledWith(new RegisterCommand(registrationDto));
     expect(status).toBe(StatusCodes.BAD_REQUEST);
     expect(body).toStrictEqual({ message: 'Email is not correct!' });
   });
