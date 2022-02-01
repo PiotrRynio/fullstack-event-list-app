@@ -1,5 +1,5 @@
-import Failure = CommandResult.Failure;
 import { CommandResult } from '../../../shared/Module/core/application/command/CommandResult';
+import Failure = CommandResult.Failure;
 import { testRegistrationsModule } from './testRegistrationsModule';
 import { RegisterCommand } from './RegisterCommand';
 
