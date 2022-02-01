@@ -6,10 +6,10 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY .. .
+COPY . .
 
-ENV PORT=8080
+ENV REST_API_PORT=5000
 
-EXPOSE 8080
+EXPOSE 5000
 
 CMD [ "npm", "start"]
