@@ -68,10 +68,11 @@ Have fun with Event List!
 
 Running this project locally:
 
-1. Clone this project locally.
-2. Run `npm install` in your bash/command line.
-3. Run `npm run start` in your bash/command line.
-4. Go to `http://localhost:3000` in your browser.
+1. Install Docker (version 3.7).
+2. Clone this project locally.
+3. Run `npm install` in your bash/command line.
+4. Run `npm run start` in your bash/command line.
+5. Go to `http://localhost:3000` in your browser.
 
 Running tests:
 
