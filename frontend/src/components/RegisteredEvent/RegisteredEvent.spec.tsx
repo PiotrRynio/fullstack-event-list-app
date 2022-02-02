@@ -6,7 +6,7 @@ describe('RegisteredEvent component', () => {
   const testFirstName = 'Jan';
   const testSecondName = 'Kowalski';
   const testEmail = 'test@test.com';
-  const testDate = new Date('01-02-2021 20:17');
+  const testDate = new Date('18-03-2021 20:17');
 
   it('should render correct', () => {
     render(<RegisteredEvent firstName={testFirstName} secondName={testSecondName} email={testEmail} date={testDate} />);
@@ -20,7 +20,6 @@ describe('RegisteredEvent component', () => {
     screen.getByText(testFirstName);
     screen.getByText(testSecondName);
     screen.getByText(testEmail);
-    screen.getByText('18-03-2021');
-    screen.getByText('20:17');
+    screen.getByText('2021-03-18');
   });
 });
