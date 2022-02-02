@@ -1,9 +1,13 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { App } from './App';
+import { render, screen } from 'test-utils';
 
-test('renders learn react link', () => {
+it('renders app component with app logo', () => {
+  // when
   render(<App />);
-  const linkElement = screen.getByText(/my app/i);
-  expect(linkElement).toBeInTheDocument();
+
+  // then
+  const logo = screen.getByRole('img', { name: /app logo/i });
+  expect(logo).toHaveAttribute('src', 'logo.png');
+  expect(logo).toHaveAttribute('alt', 'App logo of Full Stack Event List');
 });

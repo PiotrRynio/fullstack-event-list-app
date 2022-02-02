@@ -5,7 +5,7 @@ import { Wrapper, Stripe, Logo } from './Navbar.styles';
 export const Navbar = () => {
   return (
     <Wrapper>
-      <Logo src={logo} alt="App logo of Game of Thrones" aria-label="app logo" />
+      <Logo src={logo} alt="App logo of Full Stack Event List" aria-label="app logo" />
       <Stripe />
     </Wrapper>
   );
