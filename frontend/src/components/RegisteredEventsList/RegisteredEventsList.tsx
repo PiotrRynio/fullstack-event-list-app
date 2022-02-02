@@ -1,7 +1,7 @@
 import { Typography, TypographyTag } from 'components/Typography';
 import { RegisteredEvent } from 'components/RegisteredEvent';
 import { Wrapper, ListHeader, ListHeaderCell, ListWrapper } from './RegisteredEventsList.styles';
-import { useRegisteredEvents } from '../../apiHooks/useRegisteredEvents';
+import { useRegisteredEvents } from 'apiHooks/useRegisteredEvents';
 import { FetchingStatus } from '../FetchingStatus';
 
 export const RegisteredEventsList = () => {
@@ -9,8 +9,6 @@ export const RegisteredEventsList = () => {
 
   const { data: queryData, isError, isLoading } = useRegisteredEvents();
   const isNoResults = !!queryData && !queryData.length;
-
-  console.log(isNoResults);
 
   return (
     <Wrapper>

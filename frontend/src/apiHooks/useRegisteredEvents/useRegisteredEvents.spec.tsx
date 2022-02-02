@@ -49,7 +49,7 @@ describe('Api useRegisteredEvents Hooks tests', () => {
     await waitFor(() => result.current.isSuccess);
 
     // then
-    const correctRegisteredEventsDto: RegisteredEvents[] = [
+    const correctRegisteredEvents: RegisteredEvents[] = [
       {
         firstName: 'Jan',
         lastName: 'Kowalski',
@@ -66,6 +66,6 @@ describe('Api useRegisteredEvents Hooks tests', () => {
       },
     ];
 
-    expect(result.current.data).toStrictEqual(correctRegisteredEventsDto);
+    expect(result.current.data).toStrictEqual(correctRegisteredEvents);
   });
 });

@@ -1,12 +1,6 @@
-export type MockRegistrationsDto = {
-  registrationId: string;
-  firstName: string;
-  lastName: string;
-  userEmail: string;
-  userEventData: string;
-};
+import { MockRegistrationsDto } from './MockReqistrationsDtoType';
 
-const registrations: MockRegistrationsDto[] = [
+export const mockRegistrationsDto: MockRegistrationsDto[] = [
   {
     registrationId: '18b48964-f99b-42dd-bf08-089b9fb6f7c5',
     firstName: 'Jan',
@@ -22,7 +16,3 @@ const registrations: MockRegistrationsDto[] = [
     userEventData: 'Wed Feb 02 2022 07:59:19 GMT+0100 (czas środkowoeuropejski standardowy)',
   },
 ];
-
-export const registrationsResponse = {
-  registrations,
-};

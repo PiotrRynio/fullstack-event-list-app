@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 import { REST_API_URL, REGISTRATIONS_PATH } from 'constants/restApiPaths';
-import { MockRegistrationsDto, registrationsResponse } from './registeredEventsResponse';
+import { registrationsResponse } from 'mocks/msw/rest-api/registeredEvents/resposes/registeredEventsResponse';
+import { MockRegistrationsDto } from 'mocks/msw/rest-api/registeredEvents/resposes/MockReqistrationsDtoType';
 
 const getRegisteredEvents = rest.get(`${REST_API_URL}${REGISTRATIONS_PATH}`, (request, response, restContext) => {
   return response(restContext.status(200), restContext.json(registrationsResponse));
