@@ -30,15 +30,13 @@ export const ListHeaderCell = styled.div`
   text-align: center;
 `;
 
-export const ListWrapper = styled.div`
-  overflow-y: scroll;
-  width: 100%;
-  height: 30vh;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-`;
+interface ListWrapperProps {
+  isEmpty?: boolean;
+}
 
-export const NoResultStatus = styled.h4`
-  ${({ theme }) => theme.mixins.typography.heading6};
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  margin: 10px 0 15px;
+export const ListWrapper = styled.div<ListWrapperProps>`
+  overflow-y: scroll;
+  max-height: 30vh;
+  width: 100%;
+  border: 1px ${({ isEmpty }) => !isEmpty && 'solid'} ${({ theme }) => theme.colors.primary};
 `;

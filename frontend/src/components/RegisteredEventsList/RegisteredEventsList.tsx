@@ -1,12 +1,16 @@
 import { Typography, TypographyTag } from 'components/Typography';
 import { RegisteredEvent } from 'components/RegisteredEvent';
-import { Wrapper, ListHeader, ListHeaderCell, ListWrapper, NoResultStatus } from './RegisteredEventsList.styles';
+import { Wrapper, ListHeader, ListHeaderCell, ListWrapper } from './RegisteredEventsList.styles';
 import { useRegisteredEvents } from '../../apiHooks/useRegisteredEvents';
+import { FetchingStatus } from '../FetchingStatus';
 
 export const RegisteredEventsList = () => {
-  const { data: queryData } = useRegisteredEvents();
-
   const listHeaderItems = ['Date', 'Author', 'Email'];
+
+  const { data: queryData, isError, isLoading } = useRegisteredEvents();
+  const isNoResults = !!queryData && !queryData.length;
+
+  console.log(isNoResults);
 
   return (
     <Wrapper>
@@ -18,9 +22,9 @@ export const RegisteredEventsList = () => {
         ))}
       </ListHeader>
 
-      {!queryData && <NoResultStatus role="status">No results!</NoResultStatus>}
+      <FetchingStatus isError={isError} isLoading={isLoading} isNoResults={isNoResults} />
 
-      <ListWrapper>
+      <ListWrapper isEmpty={isNoResults}>
         {queryData?.map(({ firstName, lastName, email, eventData, registrationId }) => (
           <RegisteredEvent
             key={registrationId}
