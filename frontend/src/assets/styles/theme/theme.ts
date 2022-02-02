@@ -1,10 +1,10 @@
-import { Mixins, mixins } from './mixins';
-import { Breakpoints, breakpoints } from './breakpoints';
-import { fontSizes, FontSizes } from './fonsSizes';
-import { FontFamilies, fontFamilies } from './fontFamilies';
-import { Colors, colors } from './colors';
-import { fontStyles, FontStyles } from './fontStyles';
-import { FontWeights, fontWeights } from './fontWeights';
+import { Mixins, mixins } from './themeProperties/mixins';
+import { Breakpoints, breakpoints } from './themeProperties/breakpoints';
+import { fontSizes, FontSizes } from './themeProperties/fonsSizes';
+import { FontFamilies, fontFamilies } from './themeProperties/fontFamilies';
+import { Colors, colors } from './themeProperties/colors';
+import { fontStyles, FontStyles } from './themeProperties/fontStyles';
+import { FontWeights, fontWeights } from './themeProperties/fontWeights';
 
 export type Theme = {
   breakpoints: Breakpoints;
