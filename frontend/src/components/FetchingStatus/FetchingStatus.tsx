@@ -1,20 +1,24 @@
 import React from 'react';
 import { Text } from './FetchingStatus.styles';
 
-export type FetchingStatusProps = {
-  isError: boolean;
-  isLoading: boolean;
-  isNoResults: boolean;
+export enum FETCHING_STATUS {
+  'ERROR' = 'ERROR',
+  'LOADING' = 'LOADING',
+  'NO_RESULTS' = 'NO_RESULTS',
+}
+
+type FetchingStatusProps = {
+  fetchingStatus?: FETCHING_STATUS;
 };
 
-export const FetchingStatus = ({ isError, isLoading, isNoResults }: FetchingStatusProps) => {
-  if (isError) {
+export const FetchingStatus = ({ fetchingStatus }: FetchingStatusProps) => {
+  if (fetchingStatus === 'ERROR') {
     return <Text role="status">Api error...</Text>;
   }
-  if (isLoading) {
+  if (fetchingStatus === 'LOADING') {
     return <Text role="status">Loading...</Text>;
   }
-  if (isNoResults) {
+  if (fetchingStatus === 'NO_RESULTS') {
     return <Text role="status">No results!</Text>;
   }
   return <></>;
