@@ -22,6 +22,8 @@ export function RegistrationRepositoryTestCases(props: {
     afterAll(async () => await props.databaseTestSupport.closeConnection());
 
     test('findAll returns empty list when nothing was saved', async () => {
+      await props.databaseTestSupport.clearDatabase();
+
       expect(await repository.findAll()).toBeEmpty();
     });
 
