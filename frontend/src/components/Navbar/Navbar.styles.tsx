@@ -25,5 +25,5 @@ export const Stripe = styled.div`
   left: 0;
   right: 0;
   height: 20px;
-  background-color: blue;
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
