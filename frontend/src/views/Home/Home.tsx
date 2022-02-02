@@ -1,10 +1,11 @@
 import React from 'react';
 import { Typography, TypographyTag } from 'components/Typography';
+import { Wrapper } from './Home.styles';
 
 export const Home = () => {
   return (
-    <div>
+    <Wrapper>
       <Typography typographyTag={TypographyTag.HEADING_2}>Registered Events:</Typography>
-    </div>
+    </Wrapper>
   );
 };
