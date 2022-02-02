@@ -18,7 +18,7 @@ export const mixins: Mixins = {
   typography: {
     regular: css`
       font-weight: ${() => fontWeights.regular};
-      font-size: ${() => fontSizes.xs};
+      font-size: ${() => fontSizes.md};
       color: ${() => colors.regularText};
       font-family: ${() => fontFamilies.primary};
       font-style: ${() => fontStyles.normal};
@@ -39,7 +39,7 @@ export const mixins: Mixins = {
       font-style: ${() => fontStyles.normal};
     `,
     heading4: css`
-      font-size: ${() => fontSizes.xs};
+      font-size: ${() => fontSizes.md};
       font-weight: ${() => fontWeights.bold};
       color: ${() => colors.heading4};
       font-family: ${() => fontFamilies.primary};
