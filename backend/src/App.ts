@@ -20,6 +20,11 @@ import { ModuleCore } from './shared/Module/core/ModuleCore';
 import { ModuleRestApi } from './shared/Module/presentation/rest-api/ModuleRestApi';
 import { restApiExpressServer } from './shared/Module/infrastructure/rest-api/Server';
 import { connectToMongoDb } from './shared/Module/infrastructure/repository/connectToMongoDb';
+import { Registration } from './modules/registration/domain/Registration';
+import { InMemoryRegistrationRepository } from './modules/registration/infrastructure/inmemory/InMemoryRegistrationsRepository';
+import { MongoRegistrationsRepository } from './modules/registration/infrastructure/mongo/MongoRegistrationsRepository';
+import { RegistrationsRestApiModule } from './modules/registration/presentation/rest-api/RegistrationsRestApiModule';
+import { RegistrationsModuleCore } from './modules/registration/RegistrationsModuleCore';
 
 config();
 
@@ -34,7 +39,13 @@ export const App = async (
 ): Promise<App> => {
   await connectToMongoDb();
 
-  const modules: Module[] = [].filter(isDefined);
+  const repository = new MongoRegistrationsRepository();
+  const registrationsModule: Module = {
+    core: RegistrationsModuleCore(eventBus, commandBus, currentTimeProvider, entityIdGenerator, repository),
+    restApi: RegistrationsRestApiModule(commandBus, eventBus, queryBus),
+  };
+
+  const modules: Module[] = [registrationsModule].filter(isDefined);
 
   const modulesCores: ModuleCore[] = modules.map((module) => module.core);
   initializeModuleCores(commandBus, eventBus, queryBus, modulesCores);
