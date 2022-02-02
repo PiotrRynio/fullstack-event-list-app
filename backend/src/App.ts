@@ -20,11 +20,10 @@ import { ModuleCore } from './shared/Module/core/ModuleCore';
 import { ModuleRestApi } from './shared/Module/presentation/rest-api/ModuleRestApi';
 import { restApiExpressServer } from './shared/Module/infrastructure/rest-api/Server';
 import { connectToMongoDb } from './shared/Module/infrastructure/repository/connectToMongoDb';
-import { Registration } from './modules/registration/domain/Registration';
-import { InMemoryRegistrationRepository } from './modules/registration/infrastructure/inmemory/InMemoryRegistrationsRepository';
 import { MongoRegistrationsRepository } from './modules/registration/infrastructure/mongo/MongoRegistrationsRepository';
 import { RegistrationsRestApiModule } from './modules/registration/presentation/rest-api/RegistrationsRestApiModule';
 import { RegistrationsModuleCore } from './modules/registration/RegistrationsModuleCore';
+import { RegisterCommand } from './modules/registration/application/RegisterCommand';
 
 config();
 
@@ -53,5 +52,27 @@ export const App = async (
   const modulesRestApis: ModuleRestApi[] = modules.map((module) => module.restApi).filter(isDefined);
   const restApi = restApiExpressServer(modulesRestApis);
 
+  // TODO: Remove for production usage
+  await initializeMockData(commandBus, entityIdGenerator);
+
   return { restApi };
 };
+
+// TODO: Remove for production usage
+async function initializeMockData(commandBus: CommandBus, entityIdGenerator: EntityIdGenerator) {
+  const janKowalski = {
+    firstName: 'Jan',
+    secondName: 'Kowalski',
+    userEmail: 'jan.kowalski@test.pl',
+    userEventData: new Date(),
+  };
+  const katarzynaNowak = {
+    firstName: 'Katarzyna',
+    secondName: 'Nowak',
+    userEmail: 'kasia12@test.pl',
+    userEventData: new Date(),
+  };
+
+  await commandBus.execute(new RegisterCommand({ ...janKowalski }));
+  await commandBus.execute(new RegisterCommand({ ...katarzynaNowak }));
+}
