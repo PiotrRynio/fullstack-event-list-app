@@ -4,7 +4,7 @@ import {
   getRegisteredEventsWillReturn,
   getRegisteredEventsWillReturnFail,
 } from 'mocks/msw/rest-api/registeredEvents/mockEndpoints/registeredEventsRestApiMockEndpoints';
-import { mockRegistrationsDto } from 'mocks/msw/rest-api/registeredEvents/resposes/mockRegistrationsDto';
+import { mockCorrectRegistrationsDto } from 'mocks/msw/rest-api/registeredEvents/resposes/mockCorrectRegistrationsDto';
 import { RegisteredEventsList } from './RegisteredEventsList';
 
 describe('RegisteredEventsList component', () => {
@@ -36,7 +36,7 @@ describe('RegisteredEventsList component', () => {
 
   it('should display list items, when page is loaded', async () => {
     // given
-    getRegisteredEventsWillReturn(mockRegistrationsDto);
+    getRegisteredEventsWillReturn(mockCorrectRegistrationsDto);
     render(<RegisteredEventsList />);
 
     //when

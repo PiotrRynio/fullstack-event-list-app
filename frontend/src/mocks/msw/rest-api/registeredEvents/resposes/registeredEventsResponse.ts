@@ -1,5 +1,5 @@
-import { mockRegistrationsDto } from './mockRegistrationsDto';
+import { mockCorrectRegistrationsDto } from './mockCorrectRegistrationsDto';
 
 export const registrationsResponse = {
-  registrations: mockRegistrationsDto,
+  registrations: mockCorrectRegistrationsDto,
 };

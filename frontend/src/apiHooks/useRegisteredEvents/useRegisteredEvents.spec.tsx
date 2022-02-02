@@ -1,5 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { renderHook } from '@testing-library/react-hooks';
+import { getRegisteredEventsWillReturn } from 'mocks/msw/rest-api/registeredEvents/mockEndpoints/registeredEventsRestApiMockEndpoints';
+import { mockCorrectRegistrationsDto } from 'mocks/msw/rest-api/registeredEvents/resposes/mockCorrectRegistrationsDto';
 import { useRegisteredEvents } from './useRegisteredEvents';
 import { RegisteredEvents } from './RegisteredEvents';
 
@@ -41,14 +43,6 @@ describe('Api useRegisteredEvents Hooks tests', () => {
 
   test('should return correct data, after waiting for data', async () => {
     // given
-    const { result, waitFor } = renderHook(() => useRegisteredEvents(), {
-      wrapper: createWrapper(),
-    });
-
-    // when
-    await waitFor(() => result.current.isSuccess);
-
-    // then
     const correctRegisteredEvents: RegisteredEvents[] = [
       {
         firstName: 'Jan',
@@ -65,7 +59,15 @@ describe('Api useRegisteredEvents Hooks tests', () => {
         eventData: new Date('2022-02-02T06:59:19.000Z'),
       },
     ];
+    getRegisteredEventsWillReturn(mockCorrectRegistrationsDto);
+    const { result, waitFor } = renderHook(() => useRegisteredEvents(), {
+      wrapper: createWrapper(),
+    });
 
+    // when
+    await waitFor(() => result.current.isSuccess);
+
+    // then
     expect(result.current.data).toStrictEqual(correctRegisteredEvents);
   });
 });

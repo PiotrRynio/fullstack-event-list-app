@@ -2,7 +2,7 @@ import { Typography, TypographyTag } from 'components/Typography';
 import { RegisteredEvent } from 'components/RegisteredEvent';
 import { Wrapper, ListHeader, ListHeaderCell, ListWrapper } from './RegisteredEventsList.styles';
 import { useRegisteredEvents } from 'apiHooks/useRegisteredEvents';
-import { FETCHING_STATUS, FetchingStatus } from '../FetchingStatus';
+import { FETCHING_STATUS, FetchingStatus } from 'components/FetchingStatus';
 
 export const RegisteredEventsList = () => {
   const listHeaderItems = ['Date', 'Author', 'Email'];

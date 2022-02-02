@@ -1,6 +1,6 @@
 import { MockRegistrationsDto } from './MockReqistrationsDtoType';
 
-export const mockRegistrationsDto: MockRegistrationsDto[] = [
+export const mockCorrectRegistrationsDto: MockRegistrationsDto[] = [
   {
     registrationId: '18b48964-f99b-42dd-bf08-089b9fb6f7c5',
     firstName: 'Jan',
