@@ -1,4 +1,5 @@
 import { RegisteredEventsDto } from './RegisteredEventsDto';
+import { RegisteredEvents } from './RegisteredEvents';
 
 export const fromRegisteredEventsDto = ({
   registrationId,
@@ -6,6 +7,6 @@ export const fromRegisteredEventsDto = ({
   userEmail,
   lastName,
   firstName,
-}: RegisteredEventsDto) => {
-  return { registrationId, firstName, lastName, userEmail, userEventData: new Date(userEventData) };
+}: RegisteredEventsDto): RegisteredEvents => {
+  return { registrationId, firstName, lastName, email: userEmail, eventData: new Date(userEventData) };
 };

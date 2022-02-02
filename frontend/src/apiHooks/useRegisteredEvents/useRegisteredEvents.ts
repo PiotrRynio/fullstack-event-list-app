@@ -3,8 +3,9 @@ import { validateResponse } from 'apiHooks/validateResponse';
 import { REGISTRATIONS_PATH, REST_API_URL } from 'constants/restApiPaths';
 import { fromRegisteredEventsDto } from './fromRegisteredEventsDto';
 import { RegisteredEventsDto } from './RegisteredEventsDto';
+import { RegisteredEvents } from './RegisteredEvents';
 
-export const useRegisteredEvents = (): UseQueryResult<{}> =>
+export const useRegisteredEvents = (): UseQueryResult<RegisteredEvents[]> =>
   useQuery([], async () => {
     const response = await fetch(`${REST_API_URL}${REGISTRATIONS_PATH}`);
     await validateResponse(response);
