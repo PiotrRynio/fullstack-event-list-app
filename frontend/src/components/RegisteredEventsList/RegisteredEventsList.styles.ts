@@ -31,9 +31,10 @@ export const ListHeaderCell = styled.div`
 `;
 
 export const ListWrapper = styled.div`
-  overflow: scroll;
+  overflow-y: scroll;
   width: 100%;
-  height: 60vh;
+  height: 30vh;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
 `;
 
 export const NoResultStatus = styled.h4`
