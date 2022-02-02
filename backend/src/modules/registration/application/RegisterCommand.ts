@@ -1,12 +1,12 @@
 export class RegisterCommand {
   readonly firstName: string;
-  readonly secondName: string;
+  readonly lastName: string;
   readonly userEmail: string;
   readonly userEventData: Date;
 
-  constructor(props: { firstName: string; secondName: string; userEmail: string; userEventData: Date }) {
+  constructor(props: { firstName: string; lastName: string; userEmail: string; userEventData: Date }) {
     this.firstName = props.firstName;
-    this.secondName = props.secondName;
+    this.lastName = props.lastName;
     this.userEmail = props.userEmail;
     this.userEventData = props.userEventData;
   }

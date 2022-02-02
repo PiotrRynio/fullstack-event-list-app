@@ -15,14 +15,14 @@ describe('Registration REST API', () => {
 
   const postCreateRegistrationRequestBody1: PostCreateRegistrationRequestBody = {
     firstName: 'testFirstName1',
-    secondName: 'testSecondName1',
+    lastName: 'testLastName1',
     userEmail: 'testUserEmail1@test.com',
     userEventData: `${currentTime1}`,
   };
 
   const postCreateRegistrationRequestBody2: PostCreateRegistrationRequestBody = {
     firstName: 'testFirstName2',
-    secondName: 'testSecondName2',
+    lastName: 'testLastName2',
     userEmail: 'testUserEmail2@test.com',
     userEventData: `${currentTime2}`,
   };
@@ -30,7 +30,7 @@ describe('Registration REST API', () => {
   const testRegistration1: Registration = {
     registrationId: 'testId1',
     firstName: 'testFirstName1',
-    secondName: 'testSecondName1',
+    lastName: 'testLastName1',
     userEmail: 'testUserEmail1@test.com',
     userEventData: currentTime1,
   };
@@ -38,7 +38,7 @@ describe('Registration REST API', () => {
   const testRegistration2: Registration = {
     registrationId: 'testId2',
     firstName: 'testFirstName2',
-    secondName: 'testSecondName2',
+    lastName: 'testLastName2',
     userEmail: 'testUserEmail2@test.com',
     userEventData: currentTime2,
   };
@@ -100,14 +100,14 @@ describe('Registration REST API', () => {
 
 const fromRequestBody = ({
   firstName,
-  secondName,
+  lastName,
   userEmail,
   userEventData,
 }: PostCreateRegistrationRequestBody): Registration =>
   new Registration({
     registrationId: 'testId',
     firstName,
-    secondName,
+    lastName: lastName,
     userEmail,
     userEventData: new Date(userEventData),
   });

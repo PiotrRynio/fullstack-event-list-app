@@ -28,20 +28,20 @@ export function RegistrationRepositoryTestCases(props: {
     test('findAll returns all saved registrations', async () => {
       const registrationId1 = entityIdGenerator.generate();
       const firstName1 = 'testFirstName';
-      const secondName1 = 'testSecondName';
+      const lastName1 = 'testLastName';
       const userEmail1 = 'testUserEmail@test.com';
       const userEventData1 = new Date();
 
       const registrationId2 = entityIdGenerator.generate();
       const firstName2 = 'testFirstName2';
-      const secondName2 = 'testSecondName2';
+      const lastName2 = 'testLastName2';
       const userEmail2 = 'testUserEmail2@test.com';
       const userEventData2 = new Date();
 
       const registration1 = new Registration({
         registrationId: registrationId1,
         firstName: firstName1,
-        secondName: secondName1,
+        lastName: lastName1,
         userEmail: userEmail1,
         userEventData: userEventData1,
       });
@@ -49,7 +49,7 @@ export function RegistrationRepositoryTestCases(props: {
       const registration2 = new Registration({
         registrationId: registrationId2,
         firstName: firstName2,
-        secondName: secondName2,
+        lastName: lastName2,
         userEmail: userEmail2,
         userEventData: userEventData2,
       });

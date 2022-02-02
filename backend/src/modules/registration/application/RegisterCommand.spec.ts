@@ -9,12 +9,12 @@ describe('Registration | Register', () => {
     const currentTime = new Date();
     const registrationModule = testRegistrationsModule(currentTime);
     const firstName = 'testFirstName';
-    const secondName = 'testSecondName';
+    const lastName = 'testLastName';
     const userEmail = 'testUserEmail@test.com';
     const userEventData = new Date();
 
     //When
-    const registerCommand = new RegisterCommand({ firstName, secondName, userEmail, userEventData });
+    const registerCommand = new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventData });
     const commandResult = await registrationModule.executeCommand(registerCommand);
 
     //Then
@@ -26,12 +26,12 @@ describe('Registration | Register', () => {
     const currentTime = new Date();
     const registrationModule = testRegistrationsModule(currentTime);
     const firstName = 'testFirstName';
-    const secondName = 'testSecondName';
+    const lastName = 'testLastName';
     const userEmail = 'testUserEmail';
     const userEventData = new Date();
 
     //When
-    const registerCommand = new RegisterCommand({ firstName, secondName, userEmail, userEventData });
+    const registerCommand = new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventData });
     const commandResult = await registrationModule.executeCommand(registerCommand);
 
     //Then

@@ -1,7 +1,7 @@
 export class PostCreateRegistrationRequestBody {
   constructor(
     readonly firstName: string,
-    readonly secondName: string,
+    readonly lastName: string,
     readonly userEmail: string,
     readonly userEventData: string,
   ) {}

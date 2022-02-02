@@ -62,13 +62,13 @@ export const App = async (
 async function initializeMockData(commandBus: CommandBus, entityIdGenerator: EntityIdGenerator) {
   const janKowalski = {
     firstName: 'Jan',
-    secondName: 'Kowalski',
+    lastName: 'Kowalski',
     userEmail: 'jan.kowalski@test.pl',
     userEventData: new Date(),
   };
   const katarzynaNowak = {
     firstName: 'Katarzyna',
-    secondName: 'Nowak',
+    lastName: 'Nowak',
     userEmail: 'kasia12@test.pl',
     userEventData: new Date(),
   };

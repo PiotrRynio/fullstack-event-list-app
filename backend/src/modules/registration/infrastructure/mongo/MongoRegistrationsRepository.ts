@@ -9,7 +9,7 @@ export class MongoRegistrationsRepository implements RegistrationsRepository {
       {
         _id: registration.registrationId,
         firstName: registration.firstName,
-        secondName: registration.secondName,
+        lastName: registration.lastName,
         userEmail: registration.userEmail,
         userEventData: registration.userEventData,
       },
@@ -26,7 +26,7 @@ export class MongoRegistrationsRepository implements RegistrationsRepository {
 type MongoRegistration = {
   readonly _id: string;
   readonly firstName: string;
-  readonly secondName: string;
+  readonly lastName: string;
   readonly userEmail: string;
   readonly userEventData: Date;
 } & mongoose.Document;
@@ -34,7 +34,7 @@ type MongoRegistration = {
 const RegistrationSchema = new mongoose.Schema({
   _id: Schema.Types.String,
   firstName: Schema.Types.String,
-  secondName: Schema.Types.String,
+  lastName: Schema.Types.String,
   userEmail: Schema.Types.String,
   userEventData: Schema.Types.Date,
 });
@@ -45,7 +45,7 @@ function mongoDocumentToDomain(mongoDocument: MongoRegistration): Registration {
   return new Registration({
     registrationId: mongoDocument._id,
     firstName: mongoDocument.firstName,
-    secondName: mongoDocument.secondName,
+    lastName: mongoDocument.lastName,
     userEmail: mongoDocument.userEmail,
     userEventData: mongoDocument.userEventData,
   });

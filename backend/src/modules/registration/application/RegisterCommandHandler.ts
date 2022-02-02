@@ -19,7 +19,7 @@ export class RegisterCommandHandler implements CommandHandler<RegisterCommand> {
   async execute(command: RegisterCommand): Promise<CommandResult> {
     const { state, events } = registerNewRecord(this.currentTimeProvider(), this.entityIdGenerator.generate(), {
       firstName: command.firstName,
-      secondName: command.secondName,
+      lastName: command.lastName,
       userEmail: command.userEmail,
       userEventData: command.userEventData,
     });

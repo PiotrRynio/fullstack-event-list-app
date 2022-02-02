@@ -4,20 +4,20 @@ import { NewRegistrationWasSavedEvent } from './events/NewRegistrationWasSavedEv
 export class Registration {
   readonly registrationId: string;
   readonly firstName: string;
-  readonly secondName: string;
+  readonly lastName: string;
   readonly userEmail: string;
   readonly userEventData: Date;
 
   constructor(props: {
     registrationId: string;
     firstName: string;
-    secondName: string;
+    lastName: string;
     userEmail: string;
     userEventData: Date;
   }) {
     this.registrationId = props.registrationId;
     this.firstName = props.firstName;
-    this.secondName = props.secondName;
+    this.lastName = props.lastName;
     this.userEmail = props.userEmail;
     this.userEventData = props.userEventData;
   }
@@ -26,7 +26,7 @@ export class Registration {
 export function registerNewRecord(
   currentTime: Date,
   entityId: string,
-  command: { firstName: string; secondName: string; userEmail: string; userEventData: Date },
+  command: { firstName: string; lastName: string; userEmail: string; userEventData: Date },
 ): DomainCommandResult<Registration> {
   const registrationId = entityId;
 
@@ -36,7 +36,7 @@ export function registerNewRecord(
     occurredAt: currentTime,
     registrationId: registrationId,
     firstName: command.firstName,
-    secondName: command.secondName,
+    lastName: command.lastName,
     userEmail: command.userEmail,
     userEventData: command.userEventData,
   });
@@ -44,7 +44,7 @@ export function registerNewRecord(
   const newState = new Registration({
     registrationId: registrationId,
     firstName: command.firstName,
-    secondName: command.secondName,
+    lastName: command.lastName,
     userEmail: command.userEmail,
     userEventData: command.userEventData,
   });

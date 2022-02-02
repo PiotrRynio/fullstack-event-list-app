@@ -21,13 +21,14 @@ export function registrationsRouter(
   const createRegistrations = async (request: Request, response: Response) => {
     const requestBody: PostCreateRegistrationRequestBody = request.body;
 
-    const { firstName, secondName, userEmail, userEventData } = requestBody;
+    const { firstName, lastName, userEmail, userEventData } = requestBody;
 
     const commandResult = await commandPublisher.execute(
-      new RegisterCommand({ firstName, secondName, userEmail, userEventData: new Date(userEventData) }),
+      new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventData: new Date(userEventData) }),
     );
     return commandResult.process(
-      () => response.status(StatusCodes.CREATED).json({ firstName, secondName, userEmail, userEventData }).send(),
+      () =>
+        response.status(StatusCodes.CREATED).json({ firstName, lastName: lastName, userEmail, userEventData }).send(),
       (failureReason) => response.status(StatusCodes.BAD_REQUEST).json({ message: failureReason.message }),
     );
   };
@@ -48,8 +49,14 @@ export function registrationsRouter(
 const toRegistrationDto = ({
   registrationId,
   firstName,
-  secondName,
+  lastName,
   userEmail,
   userEventData,
 }: Registration): RegistrationDto =>
-  new RegistrationDto({ registrationId, firstName, secondName, userEmail, userEventData: userEventData.toString() });
+  new RegistrationDto({
+    registrationId,
+    firstName,
+    lastName: lastName,
+    userEmail,
+    userEventData: userEventData.toString(),
+  });
