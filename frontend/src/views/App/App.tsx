@@ -1,11 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from 'assets/styles/GlobalStyles';
+import { GlobalStyles } from 'assets/styles';
 
-import Navbar from 'components/Navbar/Navbar';
-import Home from 'views/Home/Home';
 import { Wrapper } from './App.styles';
-import { theme } from 'assets/styles/theme';
+import { theme } from 'assets/styles';
+import { Navbar } from 'components/Navbar';
+import { Home } from 'views/Home';
 
 export const App = () => {
   return (

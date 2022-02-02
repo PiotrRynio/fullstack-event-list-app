@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from 'test-utils';
 import { TypographyTag } from './TypographyTags';
-import Typography from './Typography';
+import { Typography } from './Typography';
 
 describe('Typography component', () => {
   const testText = 'test text';

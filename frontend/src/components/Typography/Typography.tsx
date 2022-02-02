@@ -23,5 +23,3 @@ const renderTypography = ({ typographyTag, children, ...props }: TypographyProps
 export const Typography = (props: TypographyProps) => {
   return renderTypography(props);
 };
-
-export default Typography;

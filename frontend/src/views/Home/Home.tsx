@@ -1,13 +1,10 @@
 import React from 'react';
-import Typography from '../../components/Typography/Typography';
-import { TypographyTag } from '../../components/Typography/TypographyTags';
+import { Typography, TypographyTag } from 'components/Typography';
 
-const Home = () => {
+export const Home = () => {
   return (
     <div>
       <Typography typographyTag={TypographyTag.HEADING_2}>Registered Events:</Typography>
     </div>
   );
 };
-
-export default Home;
