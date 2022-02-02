@@ -3,35 +3,18 @@ import { render, screen } from 'test-utils';
 import { RegisteredEvent } from './RegisteredEvent';
 
 describe('RegisteredEvent component', () => {
-  const testId = 'testId';
   const testFirstName = 'Jan';
   const testSecondName = 'Kowalski';
   const testEmail = 'test@test.com';
   const testDate = new Date('01-02-2021 20:17');
 
   it('should render correct', () => {
-    render(
-      <RegisteredEvent
-        id={testId}
-        firstName={testFirstName}
-        secondName={testSecondName}
-        email={testEmail}
-        date={testDate}
-      />,
-    );
+    render(<RegisteredEvent firstName={testFirstName} secondName={testSecondName} email={testEmail} date={testDate} />);
   });
 
   it('should display event details, if component is rendered', () => {
     // given
-    render(
-      <RegisteredEvent
-        id={testId}
-        firstName={testFirstName}
-        secondName={testSecondName}
-        email={testEmail}
-        date={testDate}
-      />,
-    );
+    render(<RegisteredEvent firstName={testFirstName} secondName={testSecondName} email={testEmail} date={testDate} />);
 
     // then
     screen.getByText(testFirstName);
