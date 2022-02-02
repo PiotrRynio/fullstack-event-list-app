@@ -4,15 +4,9 @@ import { Wrapper, ListHeader, ListHeaderCell, ListWrapper, NoResultStatus } from
 import { useRegisteredEvents } from '../../apiHooks/useRegisteredEvents';
 
 export const RegisteredEventsList = () => {
-  const { data } = useRegisteredEvents();
-  console.log(data);
+  const { data: queryData } = useRegisteredEvents();
 
   const listHeaderItems = ['Date', 'Author', 'Email'];
-  const events = [
-    { id: '1', firstName: 'Jan1', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
-    { id: '2', firstName: 'Jan2', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
-    { id: '3', firstName: 'Jan3', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
-  ];
 
   return (
     <Wrapper>
@@ -24,11 +18,17 @@ export const RegisteredEventsList = () => {
         ))}
       </ListHeader>
 
-      {events && <NoResultStatus role="status">No results!</NoResultStatus>}
+      {!queryData && <NoResultStatus role="status">No results!</NoResultStatus>}
 
       <ListWrapper>
-        {events.map((event) => (
-          <RegisteredEvent {...event} key={event.id} />
+        {queryData?.map(({ firstName, lastName, email, eventData, registrationId }) => (
+          <RegisteredEvent
+            key={registrationId}
+            firstName={firstName}
+            lastName={lastName}
+            eventDate={eventData}
+            email={email}
+          />
         ))}
       </ListWrapper>
     </Wrapper>

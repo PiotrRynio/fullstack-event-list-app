@@ -5,13 +5,13 @@ type RegisteredEventProps = {
   firstName: string;
   lastName: string;
   email: string;
-  date: Date;
+  eventDate: Date;
 };
-export const RegisteredEvent = ({ firstName, lastName, email, date }: RegisteredEventProps) => {
+export const RegisteredEvent = ({ firstName, lastName, email, eventDate }: RegisteredEventProps) => {
   return (
     <Wrapper>
       <TableCell>
-        <Typography typographyTag={TypographyTag.REGULAR}>{date.toLocaleDateString('en-CA')}</Typography>
+        <Typography typographyTag={TypographyTag.REGULAR}>{eventDate.toLocaleDateString('en-CA')}</Typography>
       </TableCell>
       <TableCell>
         <Typography typographyTag={TypographyTag.REGULAR}>{`${firstName} ${lastName}`}</Typography>

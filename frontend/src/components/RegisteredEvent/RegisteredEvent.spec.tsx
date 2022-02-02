@@ -9,12 +9,16 @@ describe('RegisteredEvent component', () => {
   const testDate = new Date('03 18 2021');
 
   it('should render correct', () => {
-    render(<RegisteredEvent firstName={testFirstName} lastName={testLastName} email={testEmail} date={testDate} />);
+    render(
+      <RegisteredEvent firstName={testFirstName} lastName={testLastName} email={testEmail} eventDate={testDate} />,
+    );
   });
 
   it('should display event details, if component is rendered', () => {
     // given
-    render(<RegisteredEvent firstName={testFirstName} lastName={testLastName} email={testEmail} date={testDate} />);
+    render(
+      <RegisteredEvent firstName={testFirstName} lastName={testLastName} email={testEmail} eventDate={testDate} />,
+    );
 
     // then
     screen.getByText(/Jan/i);
