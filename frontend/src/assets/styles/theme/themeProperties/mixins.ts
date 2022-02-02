@@ -8,6 +8,7 @@ import { fontStyles } from './fontStyles';
 export type Mixins = {
   typography: {
     heading2: ReadonlyArray<Interpolation<ThemeProps<any>>>;
+    heading4: ReadonlyArray<Interpolation<ThemeProps<any>>>;
     overline: ReadonlyArray<Interpolation<ThemeProps<any>>>;
     regular: ReadonlyArray<Interpolation<ThemeProps<any>>>;
   };
@@ -18,14 +19,14 @@ export const mixins: Mixins = {
     regular: css`
       font-weight: ${() => fontWeights.regular};
       font-size: ${() => fontSizes.xs};
-      color: ${() => colors.darkMedium};
+      color: ${() => colors.regularText};
       font-family: ${() => fontFamilies.primary};
       font-style: ${() => fontStyles.normal};
     `,
     overline: css`
       font-size: ${() => fontSizes.sm};
       font-weight: ${() => fontWeights.regular};
-      color: ${() => colors.darkMedium};
+      color: ${() => colors.regularText};
       font-family: ${() => fontFamilies.primary};
       font-style: ${() => fontStyles.normal};
       text-transform: uppercase;
@@ -33,7 +34,14 @@ export const mixins: Mixins = {
     heading2: css`
       font-size: ${() => fontSizes.xxl};
       font-weight: ${() => fontWeights.light};
-      color: ${() => colors.lightMedium};
+      color: ${() => colors.heading2};
+      font-family: ${() => fontFamilies.primary};
+      font-style: ${() => fontStyles.normal};
+    `,
+    heading4: css`
+      font-size: ${() => fontSizes.xs};
+      font-weight: ${() => fontWeights.bold};
+      color: ${() => colors.heading4};
       font-family: ${() => fontFamilies.primary};
       font-style: ${() => fontStyles.normal};
     `,

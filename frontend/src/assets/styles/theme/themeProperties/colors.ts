@@ -1,21 +1,15 @@
 export type Colors = {
-  secondary: string;
-  darkHard: string;
-  redMedium: string;
-  darkMedium: string;
-  lightHard: string;
-  primaryDark: string;
   primary: string;
-  lightMedium: string;
+  background: string;
+  regularText: string;
+  heading2: string;
+  heading4: string;
 };
 
 export const colors: Colors = {
   primary: '#4eadc5',
-  secondary: '#fff',
-  primaryDark: '#324b72',
-  darkHard: '#000000',
-  darkMedium: '#111',
-  lightMedium: '#fff',
-  lightHard: '#FFF',
-  redMedium: '#de212b',
+  background: '#fff',
+  regularText: '#111',
+  heading2: '#4eadc5',
+  heading4: '#4eadc5',
 };
