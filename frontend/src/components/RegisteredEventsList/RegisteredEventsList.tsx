@@ -1,13 +1,17 @@
 import { Typography, TypographyTag } from 'components/Typography';
 import { RegisteredEvent } from 'components/RegisteredEvent';
 import { Wrapper, ListHeader, ListHeaderCell, ListWrapper, NoResultStatus } from './RegisteredEventsList.styles';
+import { useRegisteredEvents } from '../../apiHooks/useRegisteredEvents';
 
 export const RegisteredEventsList = () => {
+  const { data } = useRegisteredEvents();
+  console.log(data);
+
   const listHeaderItems = ['Date', 'Author', 'Email'];
   const events = [
-    { firstName: 'Jan1', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
-    { firstName: 'Jan2', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
-    { firstName: 'Jan3', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
+    { id: '1', firstName: 'Jan1', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
+    { id: '2', firstName: 'Jan2', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
+    { id: '3', firstName: 'Jan3', lastName: 'Kowalski', email: 'jk@test.com', date: new Date() },
   ];
 
   return (
@@ -24,7 +28,7 @@ export const RegisteredEventsList = () => {
 
       <ListWrapper>
         {events.map((event) => (
-          <RegisteredEvent {...event} />
+          <RegisteredEvent {...event} key={event.id} />
         ))}
       </ListWrapper>
     </Wrapper>
