@@ -4,6 +4,7 @@
   "scripts": {
     "prepare": "husky install && cd backend && npm install && cd .. && cd frontend && npm install",
     "presentation": "docker-compose -f docker-compose.yml up",
+    "start": "docker-compose -f docker-compose.yml up",
     "start-fe": "cd frontend && npm start",
     "start-be": "cd backend && npm run start",
     "start-dev-be": "cd backend && npm run start-dev",

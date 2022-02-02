@@ -13,7 +13,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8080:5000"
+      - "5000:5000"
     environment:
       REST_API_PORT: 5000
       MONGO_HOST: my_app_mongodb
@@ -21,6 +21,6 @@ services:
     image: mongo:5.0.6
     restart: always
     ports:
-      - "27020:27017"
+      - "27017:27017"
     environment:
       MONGO_INITDB_DATABASE: fullstack_event_list_app_mongo_db
