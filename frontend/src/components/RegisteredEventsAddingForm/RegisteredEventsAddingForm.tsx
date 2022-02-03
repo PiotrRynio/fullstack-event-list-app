@@ -11,9 +11,9 @@ import {
   FIRST_NAME_REGEX_PATTERN,
   LAST_NAME_REGEX_PATTERN,
 } from 'constants/regexPatterns';
-import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
 import { useAppContext } from 'context/AppContext';
 import { Button, Form, Input, InputsGroups, Label, ValidationHint, Wrapper } from './RegisteredEventsAddingForm.styles';
+import { isEventDataCorrect } from '../../utils/isEventDataCorrect';
 
 export const RegisteredEventsAddingForm = () => {
   const initialFormState = {
@@ -113,14 +113,3 @@ export const RegisteredEventsAddingForm = () => {
     </Wrapper>
   );
 };
-
-function isEventDataCorrect(checkedDate: string) {
-  const currentDate = new Date(new Date().toLocaleDateString('en-CA'));
-  const eventDate = new Date(checkedDate);
-
-  const isEventDateCorrect =
-    eventDate.getTime() >= currentDate.getTime() &&
-    eventDate.getTime() < currentDate.getTime() + HUNDRED_YEARS_IN_MILLISECONDS;
-
-  return isEventDateCorrect;
-}
