@@ -43,6 +43,7 @@ export const Input = styled.input`
 export const ValidationHint = styled.p`
   ${({ theme }) => theme.mixins.typography.validationHint};
   text-align: right;
+  height: 20px;
 `;
 
 export const Button = styled.button`
