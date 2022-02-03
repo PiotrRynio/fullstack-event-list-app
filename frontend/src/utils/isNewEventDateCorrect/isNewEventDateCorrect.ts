@@ -1,7 +1,8 @@
 import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
+import { dateWithoutClockTime } from 'utils/dateWithoutClockTime/dateWithoutClockTime';
 
 export const isNewEventDateCorrect = (checkedDate: Date) => {
-  const currentDate = new Date(new Date().toLocaleDateString('en-CA'));
+  const currentDate = dateWithoutClockTime();
   const eventDate = new Date(checkedDate);
 
   const isEventDateCorrect =

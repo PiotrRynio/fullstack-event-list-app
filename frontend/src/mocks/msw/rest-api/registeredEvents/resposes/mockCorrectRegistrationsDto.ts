@@ -1,4 +1,5 @@
 import { MockRegistrationsDto } from './MockReqistrationsDtoType';
+import { dateWithoutClockTime } from 'utils/dateWithoutClockTime/dateWithoutClockTime';
 
 export const mockCorrectRegistrationsDto: MockRegistrationsDto[] = [
   {
@@ -6,13 +7,13 @@ export const mockCorrectRegistrationsDto: MockRegistrationsDto[] = [
     firstName: 'Jan',
     lastName: 'Kowalski',
     userEmail: 'jan.kowalski@test.pl',
-    userEventDate: 'Wed Feb 02 2022 07:59:19 GMT+0100 (czas środkowoeuropejski standardowy)',
+    userEventDate: dateWithoutClockTime().toString(),
   },
   {
     registrationId: 'd863bafc-3a99-440f-a59b-8646baeba0eb',
     firstName: 'Katarzyna',
     lastName: 'Nowak',
     userEmail: 'kasia12@test.pl',
-    userEventDate: 'Wed Feb 02 2022 07:59:19 GMT+0100 (czas środkowoeuropejski standardowy)',
+    userEventDate: dateWithoutClockTime().toString(),
   },
 ];

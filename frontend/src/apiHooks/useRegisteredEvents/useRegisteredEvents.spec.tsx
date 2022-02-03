@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { renderHook } from '@testing-library/react-hooks';
 import { getRegisteredEventsWillReturn } from 'mocks/msw/rest-api/registeredEvents/mockEndpoints/registeredEventsRestApiMockEndpoints';
 import { mockCorrectRegistrationsDto } from 'mocks/msw/rest-api/registeredEvents/resposes/mockCorrectRegistrationsDto';
+import { dateWithoutClockTime } from 'utils/dateWithoutClockTime/dateWithoutClockTime';
 import { useRegisteredEvents } from './useRegisteredEvents';
 import { RegisteredEvent } from './RegisteredEvent';
 
@@ -49,14 +50,14 @@ describe('Api useRegisteredEvents Hooks tests', () => {
         lastName: 'Kowalski',
         registrationId: '18b48964-f99b-42dd-bf08-089b9fb6f7c5',
         email: 'jan.kowalski@test.pl',
-        eventDate: new Date('2022-02-02T06:59:19.000Z'),
+        eventDate: dateWithoutClockTime(),
       },
       {
         firstName: 'Katarzyna',
         lastName: 'Nowak',
         registrationId: 'd863bafc-3a99-440f-a59b-8646baeba0eb',
         email: 'kasia12@test.pl',
-        eventDate: new Date('2022-02-02T06:59:19.000Z'),
+        eventDate: dateWithoutClockTime(),
       },
     ];
     getRegisteredEventsWillReturn(mockCorrectRegistrationsDto);
