@@ -17,14 +17,14 @@ describe('Registration REST API', () => {
     firstName: 'testFirstName1',
     lastName: 'testLastName1',
     userEmail: 'testUserEmail1@test.com',
-    userEventData: `${currentTime1}`,
+    userEventData: currentTime1.toISOString(),
   };
 
   const postCreateRegistrationRequestBody2: PostCreateRegistrationRequestBody = {
     firstName: 'testFirstName2',
     lastName: 'testLastName2',
     userEmail: 'testUserEmail2@test.com',
-    userEventData: `${currentTime2}`,
+    userEventData: currentTime2.toISOString(),
   };
 
   const testRegistration1: Registration = {
@@ -45,7 +45,7 @@ describe('Registration REST API', () => {
 
   it('POST /rest-api/registrations | when command success', async () => {
     //Given
-    const commandPublisher = CommandPublisherMock(CommandResult.success());
+    const commandPublisher = CommandPublisherMock(CommandResult.success([testRegistration1]));
     const { agent } = testModuleRestApi(RegistrationsRestApiModule, { commandPublisher });
 
     //When
@@ -56,7 +56,9 @@ describe('Registration REST API', () => {
       new RegisterCommand(fromRequestBody(postCreateRegistrationRequestBody1)),
     );
     expect(status).toBe(StatusCodes.CREATED);
-    expect(body).toStrictEqual(postCreateRegistrationRequestBody1);
+    expect(body).toStrictEqual({
+      registrations: [{ ...postCreateRegistrationRequestBody1, registrationId: 'testId1' }],
+    });
   });
 
   it('POST /rest-api/registrations | when command failure', async () => {

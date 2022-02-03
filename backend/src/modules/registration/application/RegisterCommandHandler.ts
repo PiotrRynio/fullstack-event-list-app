@@ -25,7 +25,8 @@ export class RegisterCommandHandler implements CommandHandler<RegisterCommand> {
     });
 
     await this.repository.save(state);
+    const allRegistrations = await this.repository.findAll();
     this.eventPublisher.publishAll(events);
-    return CommandResult.success();
+    return CommandResult.success(allRegistrations);
   }
 }

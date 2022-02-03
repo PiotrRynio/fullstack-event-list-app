@@ -6,7 +6,8 @@
     "format": "prettier --write \"src/**/*.{js,ts,json,css,scss,md}\"",
     "start": "npx ts-node src/index.ts",
     "start-dev": "nodemon src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "docker": "docker-compose -f docker-compose.yml up"
   },
   "dependencies": {
     "cors": "^2.8.5",

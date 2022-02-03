@@ -27,8 +27,20 @@ export function registrationsRouter(
       new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventData: new Date(userEventData) }),
     );
     return commandResult.process(
-      () =>
-        response.status(StatusCodes.CREATED).json({ firstName, lastName: lastName, userEmail, userEventData }).send(),
+      (state: Registration[]) => {
+        const responseBody = {
+          registrations: state.map(
+            ({ registrationId, firstName, lastName, userEmail, userEventData }): RegistrationDto => ({
+              registrationId,
+              firstName,
+              lastName,
+              userEmail,
+              userEventData: userEventData.toISOString(),
+            }),
+          ),
+        };
+        return response.status(StatusCodes.CREATED).json(responseBody);
+      },
       (failureReason) => response.status(StatusCodes.BAD_REQUEST).json({ message: failureReason.message }),
     );
   };
@@ -58,5 +70,5 @@ const toRegistrationDto = ({
     firstName,
     lastName: lastName,
     userEmail,
-    userEventData: userEventData.toString(),
+    userEventData: userEventData.toISOString(),
   });
