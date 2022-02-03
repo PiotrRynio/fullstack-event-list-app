@@ -69,6 +69,12 @@ export const mixins: Mixins = {
     font-family: ${() => fontFamilies.primary};
     font-weight: ${() => fontWeights.bold};
     text-decoration: none;
+    cursor: pointer;
+
+    :hover {
+      background-color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.background};
+    }
   `,
 
   textInput: css`
