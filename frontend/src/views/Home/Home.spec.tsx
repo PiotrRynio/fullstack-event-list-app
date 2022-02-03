@@ -1,8 +1,10 @@
-import { Home } from './Home';
 import { render, screen } from 'test-utils';
+import { Home } from './Home';
 
-test('renders learn react link', () => {
-  render(<Home />);
-  const linkElement = screen.getByText(/Registered Events/i);
-  expect(linkElement).toBeInTheDocument();
+describe(`Home`, () => {
+  it('should display title, when component is rendered', () => {
+    render(<Home />);
+    const title = screen.getByRole('heading', { level: 2, name: /Registered Events/i });
+    expect(title).toBeInTheDocument();
+  });
 });
