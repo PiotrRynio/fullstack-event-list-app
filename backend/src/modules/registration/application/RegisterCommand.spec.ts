@@ -36,6 +36,6 @@ describe('Registration | Register', () => {
 
     //Then
     expect(commandResult.isSuccess()).toBeFalsy();
-    expect((commandResult as Failure).reason).toStrictEqual(new Error('Email must be correct.'));
+    expect((commandResult as Failure).reason).toStrictEqual(new Error('Email is not correct.'));
   });
 });

@@ -1,7 +1,7 @@
 import { DomainCommandResult } from '../../../shared/Module/core/domain/DomainCommandResult';
-import { NewRegistrationWasSavedEvent } from './events/NewRegistrationWasSavedEvent';
-import { isNewEventDateCorrect } from '../../../utils/isNewEventDateCorrect';
 import { DATE_REGEX_PATTERN, EMAIL_REGEX_PATTERN, FIRST_NAME_REGEX_PATTERN } from '../../../constants/regexPatterns';
+import { isNewEventDateCorrect } from '../../../utils/isNewEventDateCorrect/isNewEventDateCorrect';
+import { NewRegistrationWasSavedEvent } from './events/NewRegistrationWasSavedEvent';
 
 export class Registration {
   readonly registrationId: string;

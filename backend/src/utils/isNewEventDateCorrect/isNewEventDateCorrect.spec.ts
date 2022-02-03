@@ -1,5 +1,6 @@
-import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
+// import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
 import { isNewEventDateCorrect } from './isNewEventDateCorrect';
+import { HUNDRED_YEARS_IN_MILLISECONDS } from '../../constants/times';
 
 describe('isNewEventDateCorrect', () => {
   it('should return true, if date is from now to a hundred years ahead', () => {

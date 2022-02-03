@@ -1,4 +1,4 @@
-import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
+import { HUNDRED_YEARS_IN_MILLISECONDS } from '../../constants/times';
 
 export const isNewEventDateCorrect = (checkedDate: Date) => {
   const currentDate = new Date(new Date().toLocaleDateString('en-CA'));

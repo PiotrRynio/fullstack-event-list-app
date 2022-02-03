@@ -80,7 +80,7 @@ describe('Registration REST API', () => {
 
     //Then
     expect(commandPublisher.executeCalls).toBeCalledWith(
-      new RegisterCommand(fromRequestBody(postCreateRegistrationRequestBody1)),
+      new RegisterCommand(fromRequestBody(incorrectPostCreateRegistrationRequestBody)),
     );
     expect(status).toBe(StatusCodes.BAD_REQUEST);
     expect(body).toStrictEqual({ message: 'Email is not correct!' });
