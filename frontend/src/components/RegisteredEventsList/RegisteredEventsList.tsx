@@ -29,15 +29,17 @@ export const RegisteredEventsList = () => {
       <FetchingStatus fetchingStatus={fetchingStatus} />
 
       <ListWrapper isEmpty={isNoResults}>
-        {queryData?.map(({ firstName, lastName, email, eventData, registrationId }) => (
-          <RegisteredEvent
-            key={registrationId}
-            firstName={firstName}
-            lastName={lastName}
-            eventDate={eventData}
-            email={email}
-          />
-        ))}
+        {queryData
+          ?.sort((firstEvent, secondEvent) => secondEvent.eventData.getTime() - firstEvent.eventData.getTime())
+          .map(({ firstName, lastName, email, eventData, registrationId }) => (
+            <RegisteredEvent
+              key={registrationId}
+              firstName={firstName}
+              lastName={lastName}
+              eventDate={eventData}
+              email={email}
+            />
+          ))}
       </ListWrapper>
     </Wrapper>
   );
