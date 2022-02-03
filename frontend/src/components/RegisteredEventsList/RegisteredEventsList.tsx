@@ -39,13 +39,13 @@ export const RegisteredEventsList = () => {
 
       <ListWrapper isEmpty={isNoResults}>
         {registeredEvents
-          ?.sort((firstEvent, secondEvent) => secondEvent.eventData.getTime() - firstEvent.eventData.getTime())
-          .map(({ firstName, lastName, email, eventData, registrationId }) => (
+          ?.sort((firstEvent, secondEvent) => secondEvent.eventDate.getTime() - firstEvent.eventDate.getTime())
+          .map(({ firstName, lastName, email, eventDate, registrationId }) => (
             <RegisteredEvent
               key={registrationId}
               firstName={firstName}
               lastName={lastName}
-              eventDate={eventData}
+              eventDate={eventDate}
               email={email}
             />
           ))}

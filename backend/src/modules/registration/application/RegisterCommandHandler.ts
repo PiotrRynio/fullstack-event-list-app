@@ -28,7 +28,7 @@ export class RegisterCommandHandler implements CommandHandler<RegisterCommand> {
         firstName: new FirstName(command.firstName),
         lastName: new LastName(command.lastName),
         userEmail: new EmailAddress(command.userEmail),
-        userEventData: new EventDate(command.userEventData),
+        userEventDate: new EventDate(command.userEventDate),
       },
     );
 

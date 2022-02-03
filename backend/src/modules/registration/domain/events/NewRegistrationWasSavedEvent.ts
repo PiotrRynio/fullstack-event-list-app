@@ -6,7 +6,7 @@ export class NewRegistrationWasSavedEvent implements DomainEvent {
   readonly firstName: string;
   readonly lastName: string;
   readonly userEmail: string;
-  readonly userEventData: Date;
+  readonly userEventDate: Date;
 
   constructor(props: {
     occurredAt: Date;
@@ -14,13 +14,13 @@ export class NewRegistrationWasSavedEvent implements DomainEvent {
     firstName: string;
     lastName: string;
     userEmail: string;
-    userEventData: Date;
+    userEventDate: Date;
   }) {
     this.occurredAt = props.occurredAt;
     this.registrationId = props.registrationId;
     this.firstName = props.firstName;
     this.lastName = props.lastName;
     this.userEmail = props.userEmail;
-    this.userEventData = props.userEventData;
+    this.userEventDate = props.userEventDate;
   }
 }

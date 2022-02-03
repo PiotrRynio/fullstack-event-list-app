@@ -11,34 +11,34 @@ export class Registration {
   readonly firstName: string;
   readonly lastName: string;
   readonly userEmail: string;
-  readonly userEventData: Date;
+  readonly userEventDate: Date;
 
   constructor(props: {
     registrationId: string;
     firstName: string;
     lastName: string;
     userEmail: string;
-    userEventData: Date;
+    userEventDate: Date;
   }) {
     this.registrationId = props.registrationId;
     this.firstName = props.firstName;
     this.lastName = props.lastName;
     this.userEmail = props.userEmail;
-    this.userEventData = props.userEventData;
+    this.userEventDate = props.userEventDate;
   }
 }
 
 export function registerNewRecord(
   currentTime: Date,
   registrationId: RegistrationId,
-  command: { firstName: FirstName; lastName: LastName; userEmail: EmailAddress; userEventData: EventDate },
+  command: { firstName: FirstName; lastName: LastName; userEmail: EmailAddress; userEventDate: EventDate },
 ): DomainCommandResult<Registration> {
   const newState = new Registration({
     registrationId: registrationId.raw,
     firstName: command.firstName.raw,
     lastName: command.lastName.raw,
     userEmail: command.userEmail.raw,
-    userEventData: command.userEventData.raw,
+    userEventDate: command.userEventDate.raw,
   });
 
   const newRegistrationWasSavedEvent = new NewRegistrationWasSavedEvent({

@@ -17,14 +17,14 @@ describe('Registration REST API', () => {
     firstName: 'testFirstName1',
     lastName: 'testLastName1',
     userEmail: 'testUserEmail1@test.com',
-    userEventData: currentTime1.toISOString(),
+    userEventDate: currentTime1.toISOString(),
   };
 
   const postCreateRegistrationRequestBody2: PostCreateRegistrationRequestBody = {
     firstName: 'testFirstName2',
     lastName: 'testLastName2',
     userEmail: 'testUserEmail2@test.com',
-    userEventData: currentTime2.toISOString(),
+    userEventDate: currentTime2.toISOString(),
   };
 
   const testRegistration1: Registration = {
@@ -32,7 +32,7 @@ describe('Registration REST API', () => {
     firstName: 'testFirstName1',
     lastName: 'testLastName1',
     userEmail: 'testUserEmail1@test.com',
-    userEventData: currentTime1,
+    userEventDate: currentTime1,
   };
 
   const testRegistration2: Registration = {
@@ -40,14 +40,14 @@ describe('Registration REST API', () => {
     firstName: 'testFirstName2',
     lastName: 'testLastName2',
     userEmail: 'testUserEmail2@test.com',
-    userEventData: currentTime2,
+    userEventDate: currentTime2,
   };
 
   const incorrectPostCreateRegistrationRequestBody: PostCreateRegistrationRequestBody = {
     firstName: 'testFirstName2',
     lastName: 'testLastName2',
     userEmail: 'testUser@Email2@com',
-    userEventData: currentTime2.toISOString(),
+    userEventDate: currentTime2.toISOString(),
   };
 
   it('POST /rest-api/registrations | when command success', async () => {
@@ -113,12 +113,12 @@ const fromRequestBody = ({
   firstName,
   lastName,
   userEmail,
-  userEventData,
+  userEventDate,
 }: PostCreateRegistrationRequestBody): Registration =>
   new Registration({
     registrationId: 'testId',
     firstName,
     lastName: lastName,
     userEmail,
-    userEventData: new Date(userEventData),
+    userEventDate: new Date(userEventDate),
   });

@@ -32,20 +32,20 @@ export function RegistrationRepositoryTestCases(props: {
       const firstName1 = 'testFirstName';
       const lastName1 = 'testLastName';
       const userEmail1 = 'testUserEmail@test.com';
-      const userEventData1 = new Date();
+      const userEventDate1 = new Date();
 
       const registrationId2 = entityIdGenerator.generate();
       const firstName2 = 'testFirstName2';
       const lastName2 = 'testLastName2';
       const userEmail2 = 'testUserEmail2@test.com';
-      const userEventData2 = new Date();
+      const userEventDate2 = new Date();
 
       const registration1 = new Registration({
         registrationId: registrationId1,
         firstName: firstName1,
         lastName: lastName1,
         userEmail: userEmail1,
-        userEventData: userEventData1,
+        userEventDate: userEventDate1,
       });
 
       const registration2 = new Registration({
@@ -53,7 +53,7 @@ export function RegistrationRepositoryTestCases(props: {
         firstName: firstName2,
         lastName: lastName2,
         userEmail: userEmail2,
-        userEventData: userEventData2,
+        userEventDate: userEventDate2,
       });
 
       await repository.save(registration1);

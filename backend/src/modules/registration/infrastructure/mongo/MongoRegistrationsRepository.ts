@@ -11,7 +11,7 @@ export class MongoRegistrationsRepository implements RegistrationsRepository {
         firstName: registration.firstName,
         lastName: registration.lastName,
         userEmail: registration.userEmail,
-        userEventData: registration.userEventData,
+        userEventDate: registration.userEventDate,
       },
       { useFindAndModify: false, upsert: true },
     );
@@ -28,7 +28,7 @@ type MongoRegistration = {
   readonly firstName: string;
   readonly lastName: string;
   readonly userEmail: string;
-  readonly userEventData: Date;
+  readonly userEventDate: Date;
 } & mongoose.Document;
 
 const RegistrationSchema = new mongoose.Schema({
@@ -36,7 +36,7 @@ const RegistrationSchema = new mongoose.Schema({
   firstName: Schema.Types.String,
   lastName: Schema.Types.String,
   userEmail: Schema.Types.String,
-  userEventData: Schema.Types.Date,
+  userEventDate: Schema.Types.Date,
 });
 
 const MongoRegistration = mongoose.model<MongoRegistration>('RegistrationSchema', RegistrationSchema);
@@ -47,6 +47,6 @@ function mongoDocumentToDomain(mongoDocument: MongoRegistration): Registration {
     firstName: mongoDocument.firstName,
     lastName: mongoDocument.lastName,
     userEmail: mongoDocument.userEmail,
-    userEventData: mongoDocument.userEventData,
+    userEventDate: mongoDocument.userEventDate,
   });
 }

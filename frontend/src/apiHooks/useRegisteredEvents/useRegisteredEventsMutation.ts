@@ -9,16 +9,16 @@ export type UseRegisteredEventsMutationParams = {
   firstName: string;
   lastName: string;
   email: string;
-  eventData: Date;
+  eventDate: Date;
 };
 
 export const useRegisteredEventsMutation = () =>
-  useMutation(async ({ firstName, lastName, email, eventData }: UseRegisteredEventsMutationParams) => {
+  useMutation(async ({ firstName, lastName, email, eventDate }: UseRegisteredEventsMutationParams) => {
     const eventsForRegistrationDto: EventToRegistrationDto = {
       firstName,
       lastName,
       userEmail: email,
-      userEventData: eventData.toString(),
+      userEventDate: eventDate.toString(),
     };
 
     const requestOptions = {

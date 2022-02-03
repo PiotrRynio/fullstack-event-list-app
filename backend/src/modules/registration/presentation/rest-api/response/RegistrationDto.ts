@@ -3,19 +3,19 @@ export class RegistrationDto {
   readonly firstName: string;
   readonly lastName: string;
   readonly userEmail: string;
-  readonly userEventData: string;
+  readonly userEventDate: string;
 
   constructor(props: {
     registrationId: string;
     firstName: string;
     lastName: string;
     userEmail: string;
-    userEventData: string;
+    userEventDate: string;
   }) {
     this.registrationId = props.registrationId;
     this.firstName = props.firstName;
     this.lastName = props.lastName;
     this.userEmail = props.userEmail;
-    this.userEventData = props.userEventData;
+    this.userEventDate = props.userEventDate;
   }
 }

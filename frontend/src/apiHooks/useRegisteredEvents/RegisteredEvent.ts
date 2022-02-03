@@ -3,5 +3,5 @@ export type RegisteredEvent = {
   firstName: string;
   lastName: string;
   email: string;
-  eventData: Date;
+  eventDate: Date;
 };

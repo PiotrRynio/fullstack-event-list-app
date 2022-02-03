@@ -14,7 +14,7 @@ describe('Api useRegisteredEventsMutation Hooks tests', () => {
     firstName: 'Adam',
     lastName: 'Zet',
     email: 'adam@test.pl',
-    eventData: new Date(),
+    eventDate: new Date(),
   };
 
   it(`should render hook`, async () => {
@@ -58,8 +58,8 @@ describe('Api useRegisteredEventsMutation Hooks tests', () => {
     expect(checkedRegisteredEvent?.firstName).toBe(testEventsForRegistration.firstName);
     expect(checkedRegisteredEvent?.lastName).toBe(testEventsForRegistration.lastName);
     expect(checkedRegisteredEvent?.email).toBe(testEventsForRegistration.email);
-    expect(checkedRegisteredEvent?.eventData.toLocaleDateString('en-CA')).toBe(
-      testEventsForRegistration.eventData.toLocaleDateString('en-CA'),
+    expect(checkedRegisteredEvent?.eventDate.toLocaleDateString('en-CA')).toBe(
+      testEventsForRegistration.eventDate.toLocaleDateString('en-CA'),
     );
   });
 });

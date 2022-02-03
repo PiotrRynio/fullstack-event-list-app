@@ -4,20 +4,20 @@ import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
 describe('isNewEventDateCorrect', () => {
   it('should return true, if date is from now to a hundred years ahead', () => {
     // given
-    const checkedData = new Date(new Date().getTime() + HUNDRED_YEARS_IN_MILLISECONDS / 2);
+    const checkedDate = new Date(new Date().getTime() + HUNDRED_YEARS_IN_MILLISECONDS / 2);
 
     // when
-    const isCorrect = isNewEventDateCorrect(checkedData);
+    const isCorrect = isNewEventDateCorrect(checkedDate);
 
     // then
     expect(isCorrect).toBeTruthy();
   });
   it('should return false, if date is before today', () => {
     // given
-    const checkedData = new Date(new Date().getTime() - HUNDRED_YEARS_IN_MILLISECONDS);
+    const checkedDate = new Date(new Date().getTime() - HUNDRED_YEARS_IN_MILLISECONDS);
 
     // when
-    const isCorrect = isNewEventDateCorrect(checkedData);
+    const isCorrect = isNewEventDateCorrect(checkedDate);
 
     // then
     expect(isCorrect).toBeFalsy();
@@ -25,10 +25,10 @@ describe('isNewEventDateCorrect', () => {
 
   it('should return false, if date is over a hundred years ahead', () => {
     // given
-    const checkedData = new Date(new Date().getTime() + HUNDRED_YEARS_IN_MILLISECONDS * 2);
+    const checkedDate = new Date(new Date().getTime() + HUNDRED_YEARS_IN_MILLISECONDS * 2);
 
     // when
-    const isCorrect = isNewEventDateCorrect(checkedData);
+    const isCorrect = isNewEventDateCorrect(checkedDate);
 
     // then
     expect(isCorrect).toBeFalsy();
@@ -36,10 +36,10 @@ describe('isNewEventDateCorrect', () => {
 
   it('should return true, if date is the same like today', () => {
     // given
-    const checkedData = new Date();
+    const checkedDate = new Date();
 
     // when
-    const isCorrect = isNewEventDateCorrect(checkedData);
+    const isCorrect = isNewEventDateCorrect(checkedDate);
 
     // then
     expect(isCorrect).toBeTruthy();

@@ -39,7 +39,7 @@ export const RegisteredEventsAddingForm = () => {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
-      eventData: new Date(formData.eventDate),
+      eventDate: new Date(formData.eventDate),
     };
     mutate(eventsForRegistration);
     reset();

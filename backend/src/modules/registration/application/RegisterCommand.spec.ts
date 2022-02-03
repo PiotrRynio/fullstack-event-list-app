@@ -11,10 +11,10 @@ describe('Registration | Register', () => {
     const firstName = 'testFirstName';
     const lastName = 'testLastName';
     const userEmail = 'testUserEmail@test.com';
-    const userEventData = new Date();
+    const userEventDate = new Date();
 
     //When
-    const registerCommand = new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventData });
+    const registerCommand = new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventDate });
     const commandResult = await registrationModule.executeCommand(registerCommand);
 
     //Then
@@ -28,10 +28,10 @@ describe('Registration | Register', () => {
     const firstName = 'testFirstName';
     const lastName = 'testLastName';
     const userEmail = 'testUserEmail';
-    const userEventData = new Date();
+    const userEventDate = new Date();
 
     //When
-    const registerCommand = new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventData });
+    const registerCommand = new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventDate });
     const commandResult = await registrationModule.executeCommand(registerCommand);
 
     //Then

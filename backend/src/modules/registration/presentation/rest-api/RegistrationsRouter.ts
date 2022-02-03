@@ -21,21 +21,21 @@ export function registrationsRouter(
   const createRegistrations = async (request: Request, response: Response) => {
     const requestBody: PostCreateRegistrationRequestBody = request.body;
 
-    const { firstName, lastName, userEmail, userEventData } = requestBody;
+    const { firstName, lastName, userEmail, userEventDate } = requestBody;
 
     const commandResult = await commandPublisher.execute(
-      new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventData: new Date(userEventData) }),
+      new RegisterCommand({ firstName, lastName: lastName, userEmail, userEventDate: new Date(userEventDate) }),
     );
     return commandResult.process(
       (state: Registration[]) => {
         const responseBody = {
           registrations: state.map(
-            ({ registrationId, firstName, lastName, userEmail, userEventData }): RegistrationDto => ({
+            ({ registrationId, firstName, lastName, userEmail, userEventDate }): RegistrationDto => ({
               registrationId,
               firstName,
               lastName,
               userEmail,
-              userEventData: userEventData.toISOString(),
+              userEventDate: userEventDate.toISOString(),
             }),
           ),
         };
@@ -63,12 +63,12 @@ const toRegistrationDto = ({
   firstName,
   lastName,
   userEmail,
-  userEventData,
+  userEventDate,
 }: Registration): RegistrationDto =>
   new RegistrationDto({
     registrationId,
     firstName,
     lastName: lastName,
     userEmail,
-    userEventData: userEventData.toISOString(),
+    userEventDate: userEventDate.toISOString(),
   });

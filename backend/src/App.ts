@@ -64,13 +64,13 @@ async function initializeMockData(commandBus: CommandBus, entityIdGenerator: Ent
     firstName: 'Jan',
     lastName: 'Kowalski',
     userEmail: 'jan.kowalski@test.pl',
-    userEventData: new Date(),
+    userEventDate: new Date(),
   };
   const katarzynaNowak = {
     firstName: 'Katarzyna',
     lastName: 'Nowak',
     userEmail: 'kasia12@test.pl',
-    userEventData: new Date(),
+    userEventDate: new Date(),
   };
 
   await commandBus.execute(new RegisterCommand({ ...janKowalski }));

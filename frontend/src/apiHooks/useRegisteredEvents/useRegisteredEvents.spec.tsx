@@ -49,14 +49,14 @@ describe('Api useRegisteredEvents Hooks tests', () => {
         lastName: 'Kowalski',
         registrationId: '18b48964-f99b-42dd-bf08-089b9fb6f7c5',
         email: 'jan.kowalski@test.pl',
-        eventData: new Date('2022-02-02T06:59:19.000Z'),
+        eventDate: new Date('2022-02-02T06:59:19.000Z'),
       },
       {
         firstName: 'Katarzyna',
         lastName: 'Nowak',
         registrationId: 'd863bafc-3a99-440f-a59b-8646baeba0eb',
         email: 'kasia12@test.pl',
-        eventData: new Date('2022-02-02T06:59:19.000Z'),
+        eventDate: new Date('2022-02-02T06:59:19.000Z'),
       },
     ];
     getRegisteredEventsWillReturn(mockCorrectRegistrationsDto);
