@@ -30,6 +30,5 @@ export const useRegisteredEventsMutation = () =>
     const response = await fetch(`${REST_API_URL}${REGISTRATIONS_PATH}`, requestOptions);
     await validateResponse(response);
     const fetchedData: { registrations: RegisteredEventsDto[] } = await response.json();
-
     return fetchedData.registrations.map(fromRegisteredEventDto);
   });

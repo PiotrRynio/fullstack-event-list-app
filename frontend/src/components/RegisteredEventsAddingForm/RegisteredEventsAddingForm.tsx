@@ -1,6 +1,9 @@
 import { useForm, FieldValues } from 'react-hook-form';
 import { Typography, TypographyTag } from 'components/Typography';
-import { Button, Form, Input, InputsGroups, Label, ValidationHint, Wrapper } from './RegisteredEventsAddingForm.styles';
+import {
+  useRegisteredEventsMutation,
+  UseRegisteredEventsMutationParams,
+} from 'apiHooks/useRegisteredEvents/useRegisteredEventsMutation';
 import {
   DATE_REGEX_PATTERN,
   EMAIL_REGEX_PATTERN,
@@ -8,6 +11,7 @@ import {
   LAST_NAME_REGEX_PATTERN,
 } from 'constants/regexPatterns';
 import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
+import { Button, Form, Input, InputsGroups, Label, ValidationHint, Wrapper } from './RegisteredEventsAddingForm.styles';
 
 export const RegisteredEventsAddingForm = () => {
   const initialFormState = {
@@ -16,16 +20,28 @@ export const RegisteredEventsAddingForm = () => {
     email: '',
     eventDate: new Date().toLocaleDateString('en-CA'),
   };
-
+  const { data, mutate } = useRegisteredEventsMutation();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors: formErrors },
   } = useForm({
     defaultValues: initialFormState,
   });
 
-  const onSubmit = (formData: FieldValues) => {};
+  const onSubmit = (formData: FieldValues) => {
+    const eventsForRegistration: UseRegisteredEventsMutationParams = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      eventData: new Date(formData.eventDate),
+    };
+    mutate(eventsForRegistration);
+    reset();
+  };
+
+  console.log(data);
 
   return (
     <Wrapper>
