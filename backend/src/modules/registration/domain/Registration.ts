@@ -1,8 +1,10 @@
 import { DomainCommandResult } from '../../../shared/Module/core/domain/DomainCommandResult';
-import { DATE_REGEX_PATTERN, FIRST_NAME_REGEX_PATTERN } from '../../../constants/regexPatterns';
-import { isNewEventDateCorrect } from '../../../utils/isNewEventDateCorrect/isNewEventDateCorrect';
 import { NewRegistrationWasSavedEvent } from './events/NewRegistrationWasSavedEvent';
 import { EmailAddress } from './valueObjects/EmailAddress';
+import { LastName } from './valueObjects/LastName';
+import { FirstName } from './valueObjects/FirstName';
+import { RegistrationId } from './valueObjects/RegistrationId';
+import { EventDate } from './valueObjects/EventDate';
 
 export class Registration {
   readonly registrationId: string;
@@ -28,44 +30,15 @@ export class Registration {
 
 export function registerNewRecord(
   currentTime: Date,
-  entityId: string,
-  command: { firstName: string; lastName: string; userEmail: EmailAddress; userEventData: Date },
+  registrationId: RegistrationId,
+  command: { firstName: FirstName; lastName: LastName; userEmail: EmailAddress; userEventData: EventDate },
 ): DomainCommandResult<Registration> {
-  const registrationId = entityId;
-
-  if (command.firstName.length >= 20) {
-    throw new Error('First name must have less then 20 characters.');
-  }
-  if (command.firstName.length < 3) {
-    throw new Error('First name must have at least 3 characters.');
-  }
-  if (!FIRST_NAME_REGEX_PATTERN.test(command.firstName)) {
-    throw new Error('First name must have only letters.');
-  }
-
-  if (command.lastName.length >= 20) {
-    throw new Error('Last name must have less then 20 characters.');
-  }
-  if (command.lastName.length < 3) {
-    throw new Error('Last name must have at least 3 characters.');
-  }
-  if (!FIRST_NAME_REGEX_PATTERN.test(command.lastName)) {
-    throw new Error('Last name must have only letters.');
-  }
-
-  if (!DATE_REGEX_PATTERN.test(command.userEventData.toISOString().split('T')[0])) {
-    throw new Error('Date must be in correct format.');
-  }
-  if (!isNewEventDateCorrect(command.userEventData)) {
-    throw new Error('Date must be from now to a hundred years ahead.');
-  }
-
   const newState = new Registration({
-    registrationId: registrationId,
-    firstName: command.firstName,
-    lastName: command.lastName,
+    registrationId: registrationId.raw,
+    firstName: command.firstName.raw,
+    lastName: command.lastName.raw,
     userEmail: command.userEmail.raw,
-    userEventData: command.userEventData,
+    userEventData: command.userEventData.raw,
   });
 
   const newRegistrationWasSavedEvent = new NewRegistrationWasSavedEvent({
