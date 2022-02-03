@@ -6,7 +6,7 @@ import { APP_NAME } from 'constants/names';
 export const Navbar = () => {
   return (
     <Wrapper>
-      <Logo src={logo} alt={`App logo of ${APP_NAME}`} aria-label="app logo" />
+      <Logo src={logo} alt={`App logo of ${APP_NAME} `} />
       <Stripe />
     </Wrapper>
   );
