@@ -17,6 +17,7 @@
     "react-query": "^3.27.0",
     "react-scripts": "5.0.0",
     "styled-components": "^5.3.3",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.21",
+    "@types/uuid": "^8.3.4",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
