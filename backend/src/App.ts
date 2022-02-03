@@ -52,27 +52,5 @@ export const App = async (
   const modulesRestApis: ModuleRestApi[] = modules.map((module) => module.restApi).filter(isDefined);
   const restApi = restApiExpressServer(modulesRestApis);
 
-  // TODO: Remove for production usage
-  await initializeMockData(commandBus, entityIdGenerator);
-
   return { restApi };
 };
-
-// TODO: Remove for production usage
-async function initializeMockData(commandBus: CommandBus, entityIdGenerator: EntityIdGenerator) {
-  const janKowalski = {
-    firstName: 'Jan',
-    lastName: 'Kowalski',
-    userEmail: 'jan.kowalski@test.pl',
-    userEventDate: new Date(),
-  };
-  const katarzynaNowak = {
-    firstName: 'Katarzyna',
-    lastName: 'Nowak',
-    userEmail: 'kasia12@test.pl',
-    userEventDate: new Date(),
-  };
-
-  await commandBus.execute(new RegisterCommand({ ...janKowalski }));
-  await commandBus.execute(new RegisterCommand({ ...katarzynaNowak }));
-}
