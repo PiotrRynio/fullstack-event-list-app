@@ -96,9 +96,10 @@ export const RegisteredEventsAddingForm = () => {
             <ValidationHint>{formErrors.email && 'Invalid email address'}</ValidationHint>
           </Label>
           <Label>
-            <Typography typographyTag={TypographyTag.OVERLINE}>Event Data:</Typography>
+            <Typography typographyTag={TypographyTag.OVERLINE}>Event Date:</Typography>
             <Input
               type="date"
+              aria-label="date picker input"
               {...register('eventDate', {
                 pattern: DATE_REGEX_PATTERN,
                 validate: (date) => isNewEventDateCorrect(new Date(date)),
