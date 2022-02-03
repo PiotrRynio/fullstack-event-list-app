@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import { Typography, TypographyTag } from 'components/Typography';
 import {
@@ -11,6 +12,7 @@ import {
   LAST_NAME_REGEX_PATTERN,
 } from 'constants/regexPatterns';
 import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
+import { useAppContext } from 'context/AppContext';
 import { Button, Form, Input, InputsGroups, Label, ValidationHint, Wrapper } from './RegisteredEventsAddingForm.styles';
 
 export const RegisteredEventsAddingForm = () => {
@@ -20,7 +22,7 @@ export const RegisteredEventsAddingForm = () => {
     email: '',
     eventDate: new Date().toLocaleDateString('en-CA'),
   };
-  const { data, mutate } = useRegisteredEventsMutation();
+
   const {
     register,
     handleSubmit,
@@ -29,6 +31,8 @@ export const RegisteredEventsAddingForm = () => {
   } = useForm({
     defaultValues: initialFormState,
   });
+  const { data, mutate } = useRegisteredEventsMutation();
+  const { setRegisteredEvents } = useAppContext();
 
   const onSubmit = (formData: FieldValues) => {
     const eventsForRegistration: UseRegisteredEventsMutationParams = {
@@ -41,7 +45,11 @@ export const RegisteredEventsAddingForm = () => {
     reset();
   };
 
-  console.log(data);
+  useEffect(() => {
+    if (data) {
+      setRegisteredEvents(data);
+    }
+  }, [data]);
 
   return (
     <Wrapper>
