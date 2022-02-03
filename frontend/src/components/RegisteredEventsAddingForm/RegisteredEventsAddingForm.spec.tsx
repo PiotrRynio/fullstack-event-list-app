@@ -1,10 +1,11 @@
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from 'test-utils';
-import { RegisteredEventsAddingForm } from './RegisteredEventsAddingForm';
 import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
+import { dateWithoutClockTime } from 'utils/dateWithoutClockTime/dateWithoutClockTime';
+import { RegisteredEventsAddingForm } from './RegisteredEventsAddingForm';
 
 describe('RegisteredEventsAddingForm component', () => {
-  const currentDate = new Date();
+  const currentDate = dateWithoutClockTime();
   const correctTestEventDetails = {
     firstName: 'Adam',
     lastName: 'Nowak',
