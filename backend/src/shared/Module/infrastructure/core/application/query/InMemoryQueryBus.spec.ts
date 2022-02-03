@@ -3,12 +3,12 @@ import { QueryBus } from '../../../../core/application/query/QueryBus';
 
 describe('InMemoryQueryBus', () => {
   const firstTestName = 'Jan Kowalski';
-  const secondTestName = 'Jan Nowak';
+  const lastTestName = 'Jan Nowak';
   const testId = 'SampleId';
 
   it('query should returns response from registered handler', async () => {
     //Given
-    const queryReturnValue = [new testObject({ name: firstTestName }), new testObject({ name: secondTestName })];
+    const queryReturnValue = [new testObject({ name: firstTestName }), new testObject({ name: lastTestName })];
     const queryBus: QueryBus = new InMemoryQueryBus().withHandler<testObject[], FindTestObjectByGroup>(
       FindTestObjectByGroup,
       queryHandlerStubReturning<testObject[], FindTestObjectByGroup>(queryReturnValue),
@@ -24,7 +24,7 @@ describe('InMemoryQueryBus', () => {
 
   it('when try to register another query handler, then registering should fail', async () => {
     //Given
-    const queryReturnValue = [new testObject({ name: firstTestName }), new testObject({ name: secondTestName })];
+    const queryReturnValue = [new testObject({ name: firstTestName }), new testObject({ name: lastTestName })];
     const queryBus: QueryBus = new InMemoryQueryBus().withHandler<testObject[], FindTestObjectByGroup>(
       FindTestObjectByGroup,
       queryHandlerStubReturning<testObject[], FindTestObjectByGroup>(queryReturnValue),
