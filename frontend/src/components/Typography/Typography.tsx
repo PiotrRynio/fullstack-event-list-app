@@ -1,10 +1,10 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { TypographyTag } from './TypographyTags';
 import { Regular, Overline, Heading2, Heading4 } from './Typography.styles';
 
 export type TypographyProps = {
   typographyTag: TypographyTag;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const renderTypography = ({ typographyTag, children, ...props }: TypographyProps) => {
