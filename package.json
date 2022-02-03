@@ -10,6 +10,7 @@
     "start-dev-be": "cd backend && npm run start-dev",
     "test-fe": "cd frontend && npm run test",
     "test-be": "cd backend && npm run test",
+    "test-be:cov": "cd backend && npm run test:cov",
     "docker": "docker-compose -f docker-compose.yml up"
   },
   "devDependencies": {
