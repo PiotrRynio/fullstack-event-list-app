@@ -4,6 +4,8 @@ export type Colors = {
   regularText: string;
   heading2: string;
   heading4: string;
+  overline: string;
+  error: string;
 };
 
 export const colors: Colors = {
@@ -12,4 +14,6 @@ export const colors: Colors = {
   regularText: '#111',
   heading2: '#4eadc5',
   heading4: '#4eadc5',
+  overline: '#4eadc5',
+  error: '#de212b',
 };
