@@ -1,5 +1,7 @@
 import { DomainCommandResult } from '../../../shared/Module/core/domain/DomainCommandResult';
 import { NewRegistrationWasSavedEvent } from './events/NewRegistrationWasSavedEvent';
+import { isNewEventDateCorrect } from '../../../utils/isNewEventDateCorrect';
+import { DATE_REGEX_PATTERN, EMAIL_REGEX_PATTERN, FIRST_NAME_REGEX_PATTERN } from '../../../constants/regexPatterns';
 
 export class Registration {
   readonly registrationId: string;
@@ -30,7 +32,36 @@ export function registerNewRecord(
 ): DomainCommandResult<Registration> {
   const registrationId = entityId;
 
-  // TODO: Email and data validation!
+  if (command.firstName.length >= 20) {
+    throw new Error('First name must have less then 20 characters.');
+  }
+  if (command.firstName.length < 3) {
+    throw new Error('First name must have at least 3 characters.');
+  }
+  if (!FIRST_NAME_REGEX_PATTERN.test(command.firstName)) {
+    throw new Error('First name must have only letters.');
+  }
+
+  if (command.lastName.length >= 20) {
+    throw new Error('Last name must have less then 20 characters.');
+  }
+  if (command.lastName.length < 3) {
+    throw new Error('Last name must have at least 3 characters.');
+  }
+  if (!FIRST_NAME_REGEX_PATTERN.test(command.lastName)) {
+    throw new Error('Last name must have only letters.');
+  }
+
+  if (!EMAIL_REGEX_PATTERN.test(command.userEmail)) {
+    throw new Error('Email is not correct.');
+  }
+
+  if (!DATE_REGEX_PATTERN.test(command.userEventData.toISOString().split('T')[0])) {
+    throw new Error('Date must be in correct format.');
+  }
+  if (!isNewEventDateCorrect(command.userEventData)) {
+    throw new Error('Date must be from now to a hundred years ahead.');
+  }
 
   const newRegistrationWasSavedEvent = new NewRegistrationWasSavedEvent({
     occurredAt: currentTime,
