@@ -7,6 +7,7 @@ import { RegisterCommand } from './RegisterCommand';
 import { EntityIdGenerator } from '../../../shared/Module/core/application/EntityIdGenerator';
 import { RegistrationsRepository } from './RegistrationsRepository';
 import { registerNewRecord } from '../domain/Registration';
+import { EmailAddress } from '../domain/valueObjects/EmailAddress';
 
 export class RegisterCommandHandler implements CommandHandler<RegisterCommand> {
   constructor(
@@ -20,7 +21,7 @@ export class RegisterCommandHandler implements CommandHandler<RegisterCommand> {
     const { state, events } = registerNewRecord(this.currentTimeProvider(), this.entityIdGenerator.generate(), {
       firstName: command.firstName,
       lastName: command.lastName,
-      userEmail: command.userEmail,
+      userEmail: new EmailAddress(command.userEmail),
       userEventData: command.userEventData,
     });
 

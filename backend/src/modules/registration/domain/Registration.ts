@@ -1,7 +1,8 @@
 import { DomainCommandResult } from '../../../shared/Module/core/domain/DomainCommandResult';
-import { DATE_REGEX_PATTERN, EMAIL_REGEX_PATTERN, FIRST_NAME_REGEX_PATTERN } from '../../../constants/regexPatterns';
+import { DATE_REGEX_PATTERN, FIRST_NAME_REGEX_PATTERN } from '../../../constants/regexPatterns';
 import { isNewEventDateCorrect } from '../../../utils/isNewEventDateCorrect/isNewEventDateCorrect';
 import { NewRegistrationWasSavedEvent } from './events/NewRegistrationWasSavedEvent';
+import { EmailAddress } from './valueObjects/EmailAddress';
 
 export class Registration {
   readonly registrationId: string;
@@ -28,7 +29,7 @@ export class Registration {
 export function registerNewRecord(
   currentTime: Date,
   entityId: string,
-  command: { firstName: string; lastName: string; userEmail: string; userEventData: Date },
+  command: { firstName: string; lastName: string; userEmail: EmailAddress; userEventData: Date },
 ): DomainCommandResult<Registration> {
   const registrationId = entityId;
 
@@ -52,10 +53,6 @@ export function registerNewRecord(
     throw new Error('Last name must have only letters.');
   }
 
-  if (!EMAIL_REGEX_PATTERN.test(command.userEmail)) {
-    throw new Error('Email is not correct.');
-  }
-
   if (!DATE_REGEX_PATTERN.test(command.userEventData.toISOString().split('T')[0])) {
     throw new Error('Date must be in correct format.');
   }
@@ -63,21 +60,17 @@ export function registerNewRecord(
     throw new Error('Date must be from now to a hundred years ahead.');
   }
 
-  const newRegistrationWasSavedEvent = new NewRegistrationWasSavedEvent({
-    occurredAt: currentTime,
-    registrationId: registrationId,
-    firstName: command.firstName,
-    lastName: command.lastName,
-    userEmail: command.userEmail,
-    userEventData: command.userEventData,
-  });
-
   const newState = new Registration({
     registrationId: registrationId,
     firstName: command.firstName,
     lastName: command.lastName,
-    userEmail: command.userEmail,
+    userEmail: command.userEmail.raw,
     userEventData: command.userEventData,
+  });
+
+  const newRegistrationWasSavedEvent = new NewRegistrationWasSavedEvent({
+    ...newState,
+    occurredAt: currentTime,
   });
 
   return { state: newState, events: [newRegistrationWasSavedEvent] };
