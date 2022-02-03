@@ -70,13 +70,13 @@ Running this project locally:
 
 1. Install Docker (version 3.7).
 2. Clone this project locally.
-3. Run `npm install` in your bash/command line.
-4. Run `npm run start` in your bash/command line.
+3. Run `npm install` in your bash/command line (in main folder).
+4. Run `npm run start` (it is running Docker script) in your bash/command line (in main folder).
 5. Go to `http://localhost:3000` in your browser.
 
 Running tests:
 
-1. First run project locally (look up to "running this project locally"). 
+1. First run project with docker (look up to "running this project locally").
 2. Run `npm run test-fe` in your bash/command line.
 3. Run `npm run test-be` in your bash/command line.
 
@@ -84,6 +84,10 @@ Others:
 
 1. API port: 5000.
 2. MongoDB port: 27017.
+3. Node version: 16.
+4. You can start without Docker too (You may need another steps then bellow):
+   1. Run `npm install` in your bash/command line (in main folder).
+   2. Next `npm run start-fe` (frontend) or `npm run start-be` (backend) in your bash/command line (in main folder).
 
 ---
 
