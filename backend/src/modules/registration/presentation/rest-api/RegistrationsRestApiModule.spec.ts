@@ -43,6 +43,13 @@ describe('Registration REST API', () => {
     userEventData: currentTime2,
   };
 
+  const incorrectPostCreateRegistrationRequestBody: PostCreateRegistrationRequestBody = {
+    firstName: 'testFirstName2',
+    lastName: 'testLastName2',
+    userEmail: 'testUser@Email2@com',
+    userEventData: currentTime2.toISOString(),
+  };
+
   it('POST /rest-api/registrations | when command success', async () => {
     //Given
     const commandPublisher = CommandPublisherMock(CommandResult.success([testRegistration1]));
@@ -67,7 +74,9 @@ describe('Registration REST API', () => {
     const { agent } = testModuleRestApi(RegistrationsRestApiModule, { commandPublisher });
 
     //When
-    const { body, status } = await agent.post('/rest-api/registrations').send(postCreateRegistrationRequestBody1);
+    const { body, status } = await agent
+      .post('/rest-api/registrations')
+      .send(incorrectPostCreateRegistrationRequestBody);
 
     //Then
     expect(commandPublisher.executeCalls).toBeCalledWith(
