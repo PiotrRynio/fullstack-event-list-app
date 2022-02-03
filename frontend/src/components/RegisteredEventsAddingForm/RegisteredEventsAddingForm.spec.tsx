@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from 'test-utils';
 import { RegisteredEventsAddingForm } from './RegisteredEventsAddingForm';
+import { HUNDRED_YEARS_IN_MILLISECONDS } from 'constants/times';
 
 describe('RegisteredEventsAddingForm component', () => {
   const currentDate = new Date();
@@ -54,7 +55,7 @@ describe('RegisteredEventsAddingForm component', () => {
     expect(dateInput).toHaveValue(correctTestEventDetails.eventDate);
   });
 
-  it('should send form, when you click button, if you filled form correct', async () => {
+  it('should send form, when you click submit button, if you filled form correct', async () => {
     // given
     render(<RegisteredEventsAddingForm />);
     const { firstNameInput, lastNameInput, emailInput, dateInput } = fillAndCheckInputsValues(correctTestEventDetails);
@@ -64,9 +65,36 @@ describe('RegisteredEventsAddingForm component', () => {
     userEvent.click(submitButton);
 
     // then
-    await waitFor(() => expect(firstNameInput).not.toHaveValue(''));
+    await waitFor(() => expect(firstNameInput).toHaveValue(''));
     expect(lastNameInput).toHaveValue('');
     expect(emailInput).toHaveValue('');
+    expect(dateInput).toHaveValue(correctTestEventDetails.eventDate);
+  });
+
+  it('should display validation hints and no clean inputs, when you click submit button, if you filled form incorrect', async () => {
+    // given
+    const correctTestEventDetails = {
+      firstName: 'A%',
+      lastName: 'N*',
+      email: 'Adam@Nowak@test.com',
+      eventDate: new Date(currentDate.getTime() - HUNDRED_YEARS_IN_MILLISECONDS).toLocaleDateString('en-CA'),
+    };
+    render(<RegisteredEventsAddingForm />);
+    const { firstNameInput, lastNameInput, emailInput, dateInput } = fillAndCheckInputsValues(correctTestEventDetails);
+
+    // when
+    const submitButton = screen.getByRole('button', { name: /submit/i });
+    userEvent.click(submitButton);
+
+    // then
+    await waitFor(() => screen.findAllByLabelText(/Invalid first name/i));
+    screen.getByLabelText(/Invalid first name/i);
+    screen.getByLabelText(/Invalid last name/i);
+    screen.getByLabelText(/Invalid email address/i);
+    screen.getByLabelText(/Invalid future date/i);
+    expect(firstNameInput).toHaveValue(correctTestEventDetails.firstName);
+    expect(lastNameInput).toHaveValue(correctTestEventDetails.lastName);
+    expect(emailInput).toHaveValue(correctTestEventDetails.email);
     expect(dateInput).toHaveValue(correctTestEventDetails.eventDate);
   });
 });
