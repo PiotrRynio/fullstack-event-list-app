@@ -12,8 +12,8 @@ import {
   LAST_NAME_REGEX_PATTERN,
 } from 'constants/regexPatterns';
 import { useAppContext } from 'context/AppContext';
+import { isNewEventDateCorrect } from 'utils/isNewEventDateCorrect';
 import { Button, Form, Input, InputsGroups, Label, ValidationHint, Wrapper } from './RegisteredEventsAddingForm.styles';
-import { isEventDataCorrect } from '../../utils/isEventDataCorrect';
 
 export const RegisteredEventsAddingForm = () => {
   const initialFormState = {
@@ -101,7 +101,7 @@ export const RegisteredEventsAddingForm = () => {
               type="date"
               {...register('eventDate', {
                 pattern: DATE_REGEX_PATTERN,
-                validate: isEventDataCorrect,
+                validate: (date) => isNewEventDateCorrect(new Date(date)),
               })}
             />
             <ValidationHint>{formErrors.eventDate && 'Invalid future date'}</ValidationHint>
