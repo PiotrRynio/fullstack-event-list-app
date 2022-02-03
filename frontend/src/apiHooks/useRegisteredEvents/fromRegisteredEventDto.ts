@@ -1,12 +1,12 @@
 import { RegisteredEventsDto } from './RegisteredEventsDto';
-import { RegisteredEvents } from './RegisteredEvents';
+import { RegisteredEvent } from './RegisteredEvent';
 
-export const fromRegisteredEventsDto = ({
+export const fromRegisteredEventDto = ({
   registrationId,
   userEventData,
   userEmail,
   lastName,
   firstName,
-}: RegisteredEventsDto): RegisteredEvents => {
+}: RegisteredEventsDto): RegisteredEvent => {
   return { registrationId, firstName, lastName, email: userEmail, eventData: new Date(userEventData) };
 };

@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { getRegisteredEventsWillReturn } from 'mocks/msw/rest-api/registeredEvents/mockEndpoints/registeredEventsRestApiMockEndpoints';
 import { mockCorrectRegistrationsDto } from 'mocks/msw/rest-api/registeredEvents/resposes/mockCorrectRegistrationsDto';
 import { useRegisteredEvents } from './useRegisteredEvents';
-import { RegisteredEvents } from './RegisteredEvents';
+import { RegisteredEvent } from './RegisteredEvent';
 
 const createWrapper = () => {
   const queryClient = new QueryClient();
@@ -43,7 +43,7 @@ describe('Api useRegisteredEvents Hooks tests', () => {
 
   test('should return correct data, after waiting for data', async () => {
     // given
-    const correctRegisteredEvents: RegisteredEvents[] = [
+    const correctRegisteredEvents: RegisteredEvent[] = [
       {
         firstName: 'Jan',
         lastName: 'Kowalski',
