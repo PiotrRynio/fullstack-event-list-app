@@ -13,16 +13,6 @@ describe('RegisteredEventsList component', () => {
     render(<RegisteredEventsList />);
   });
 
-  it('should display table headers, if component rendered', () => {
-    // given
-    render(<RegisteredEventsList />);
-
-    // then
-    screen.getByText(/Date/i);
-    screen.getByText(/Author/i);
-    screen.getByText(/Email/i);
-  });
-
   it('should display loading status, if data are not fetched yet during component rendering', () => {
     // given
     getRegisteredEventsIsLoading();

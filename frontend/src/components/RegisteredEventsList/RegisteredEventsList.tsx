@@ -1,14 +1,11 @@
-import { Typography, TypographyTag } from 'components/Typography';
+import { useEffect } from 'react';
 import { RegisteredEvent } from 'components/RegisteredEvent';
-import { Wrapper, ListHeader, ListHeaderCell, ListWrapper } from './RegisteredEventsList.styles';
 import { useRegisteredEvents } from 'apiHooks/useRegisteredEvents';
 import { FETCHING_STATUS, FetchingStatus } from 'components/FetchingStatus';
 import { useAppContext } from 'context/AppContext';
-import { useEffect } from 'react';
+import { Wrapper } from './RegisteredEventsList.styles';
 
 export const RegisteredEventsList = () => {
-  const listHeaderItems = ['Date', 'Author', 'Email'];
-
   const { registeredEvents, setRegisteredEvents } = useAppContext();
   const { data: queryData, isError, isLoading } = useRegisteredEvents();
   const isNoResults = !!queryData && !queryData.length;
@@ -27,29 +24,18 @@ export const RegisteredEventsList = () => {
 
   return (
     <Wrapper>
-      <ListHeader>
-        {listHeaderItems.map((headerText) => (
-          <ListHeaderCell key={headerText}>
-            <Typography typographyTag={TypographyTag.HEADING_4}>{headerText}</Typography>
-          </ListHeaderCell>
-        ))}
-      </ListHeader>
-
       <FetchingStatus fetchingStatus={fetchingStatus} />
-
-      <ListWrapper isEmpty={isNoResults}>
-        {registeredEvents
-          ?.sort((firstEvent, secondEvent) => secondEvent.eventDate.getTime() - firstEvent.eventDate.getTime())
-          .map(({ firstName, lastName, email, eventDate, registrationId }) => (
-            <RegisteredEvent
-              key={registrationId}
-              firstName={firstName}
-              lastName={lastName}
-              eventDate={eventDate}
-              email={email}
-            />
-          ))}
-      </ListWrapper>
+      {registeredEvents
+        ?.sort((firstEvent, secondEvent) => secondEvent.eventDate.getTime() - firstEvent.eventDate.getTime())
+        .map(({ firstName, lastName, email, eventDate, registrationId }) => (
+          <RegisteredEvent
+            key={registrationId}
+            firstName={firstName}
+            lastName={lastName}
+            eventDate={eventDate}
+            email={email}
+          />
+        ))}
     </Wrapper>
   );
 };

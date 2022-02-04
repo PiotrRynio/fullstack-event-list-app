@@ -13,7 +13,7 @@ import {
 } from 'constants/regexPatterns';
 import { useAppContext } from 'context/AppContext';
 import { isNewEventDateCorrect } from 'utils/isNewEventDateCorrect';
-import { Button, Form, Input, InputsGroups, Label, ValidationHint, Wrapper } from './RegisteredEventsAddingForm.styles';
+import { Button, Form, Input, Label, ValidationHint, Wrapper } from './RegisteredEventsAddingForm.styles';
 
 export const RegisteredEventsAddingForm = () => {
   const initialFormState = {
@@ -55,59 +55,56 @@ export const RegisteredEventsAddingForm = () => {
     <Wrapper>
       <Typography typographyTag={TypographyTag.HEADING_4}>Add new event:</Typography>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <InputsGroups>
-          <Label>
-            <Typography typographyTag={TypographyTag.OVERLINE}>First name:</Typography>
-            <Input
-              type="text"
-              placeholder={'Write your first name...'}
-              {...register('firstName', {
-                required: true,
-                minLength: 2,
-                maxLength: 30,
-                pattern: FIRST_NAME_REGEX_PATTERN,
-              })}
-            />
-            <ValidationHint>{formErrors.firstName && 'Invalid first name'}</ValidationHint>
-          </Label>
-          <Label>
-            <Typography typographyTag={TypographyTag.OVERLINE}>Last Name:</Typography>
-            <Input
-              type="text"
-              placeholder={'Write your last name...'}
-              {...register('lastName', {
-                required: true,
-                minLength: 2,
-                maxLength: 30,
-                pattern: LAST_NAME_REGEX_PATTERN,
-              })}
-            />
-            <ValidationHint>{formErrors.lastName && 'Invalid last name'}</ValidationHint>
-          </Label>
-        </InputsGroups>
-        <InputsGroups>
-          <Label>
-            <Typography typographyTag={TypographyTag.OVERLINE}>Email:</Typography>
-            <Input
-              type="text"
-              placeholder={'Write your email...'}
-              {...register('email', { required: true, pattern: EMAIL_REGEX_PATTERN })}
-            />
-            <ValidationHint>{formErrors.email && 'Invalid email address'}</ValidationHint>
-          </Label>
-          <Label>
-            <Typography typographyTag={TypographyTag.OVERLINE}>Event Date:</Typography>
-            <Input
-              type="date"
-              aria-label="date picker input"
-              {...register('eventDate', {
-                pattern: DATE_REGEX_PATTERN,
-                validate: (date) => isNewEventDateCorrect(new Date(date)),
-              })}
-            />
-            <ValidationHint>{formErrors.eventDate && 'Invalid future date'}</ValidationHint>
-          </Label>
-        </InputsGroups>
+        <Label>
+          <Typography typographyTag={TypographyTag.OVERLINE}>First name:</Typography>
+          <Input
+            type="text"
+            placeholder={'Write your first name...'}
+            {...register('firstName', {
+              required: true,
+              minLength: 2,
+              maxLength: 30,
+              pattern: FIRST_NAME_REGEX_PATTERN,
+            })}
+          />
+          <ValidationHint>{formErrors.firstName && 'Invalid first name'}</ValidationHint>
+        </Label>
+        <Label>
+          <Typography typographyTag={TypographyTag.OVERLINE}>Last Name:</Typography>
+          <Input
+            type="text"
+            placeholder={'Write your last name...'}
+            {...register('lastName', {
+              required: true,
+              minLength: 2,
+              maxLength: 30,
+              pattern: LAST_NAME_REGEX_PATTERN,
+            })}
+          />
+          <ValidationHint>{formErrors.lastName && 'Invalid last name'}</ValidationHint>
+        </Label>
+
+        <Label>
+          <Typography typographyTag={TypographyTag.OVERLINE}>Email:</Typography>
+          <Input
+            type="text"
+            placeholder={'Write your email...'}
+            {...register('email', { required: true, pattern: EMAIL_REGEX_PATTERN })}
+          />
+          <ValidationHint>{formErrors.email && 'Invalid email address'}</ValidationHint>
+        </Label>
+        <Label>
+          <Typography typographyTag={TypographyTag.OVERLINE}>Event Date:</Typography>
+          <Input
+            type="date"
+            aria-label="date picker input"
+            {...register('eventDate', {
+              pattern: DATE_REGEX_PATTERN,
+              validate: (date) => isNewEventDateCorrect(new Date(date)),
+            })}
+          />
+          <ValidationHint>{formErrors.eventDate && 'Invalid future date'}</ValidationHint>
+        </Label>
 
         <Button type="submit">Submit</Button>
       </Form>

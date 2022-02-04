@@ -4,9 +4,16 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 16px;
+  width: 100%;
+  padding: 16px 0;
+  background-color: ${({ theme }) => theme.colors.formBackground};
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
     padding: 32px 16px;
   }
 `;
@@ -17,14 +24,6 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
   padding-top: 16px;
-`;
-
-export const InputsGroups = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0 35px;
 `;
 
 export const Label = styled.label`

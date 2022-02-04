@@ -1,5 +1,6 @@
 import { Typography, TypographyTag } from 'components/Typography';
-import { TableCell, Wrapper } from './RegisteredEvent.styles';
+import { Row, Wrapper } from './RegisteredEvent.styles';
+import React from 'react';
 
 type RegisteredEventProps = {
   firstName: string;
@@ -10,15 +11,18 @@ type RegisteredEventProps = {
 export const RegisteredEvent = ({ firstName, lastName, email, eventDate }: RegisteredEventProps) => {
   return (
     <Wrapper>
-      <TableCell>
-        <Typography typographyTag={TypographyTag.REGULAR}>{eventDate.toLocaleDateString('en-CA')}</Typography>
-      </TableCell>
-      <TableCell>
+      <Row>
+        <Typography typographyTag={TypographyTag.HEADING_4}>{`Author: `}</Typography>
         <Typography typographyTag={TypographyTag.REGULAR}>{`${firstName} ${lastName}`}</Typography>
-      </TableCell>
-      <TableCell>
+      </Row>
+      <Row>
+        <Typography typographyTag={TypographyTag.HEADING_4}>{`Date: `}</Typography>
+        <Typography typographyTag={TypographyTag.REGULAR}>{eventDate.toLocaleDateString('en-CA')}</Typography>
+      </Row>
+      <Row>
+        <Typography typographyTag={TypographyTag.HEADING_4}>{`Email: `}</Typography>
         <Typography typographyTag={TypographyTag.REGULAR}>{email}</Typography>
-      </TableCell>
+      </Row>
     </Wrapper>
   );
 };
