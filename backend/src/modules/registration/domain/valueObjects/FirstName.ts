@@ -4,7 +4,7 @@ export class FirstName {
   private readonly TYPE = 'FirstName';
 
   constructor(readonly raw: string) {
-    if (raw.length >= 20) {
+    if (raw.length > 20) {
       throw new Error('First name must have less then 20 characters.');
     }
     if (raw.length < 3) {
