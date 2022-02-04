@@ -105,7 +105,7 @@ github.com/PiotrRynio/
 
 ### Images:
 
-![](frontend/readmeFiles/image01.png)
-![](frontend/readmeFiles/image02.png)
-![](frontend/readmeFiles/image03.png)
-![](frontend/readmeFiles/image04.png)
+![](docs/image01.png)
+![](docs/image02.png)
+![](docs/image03.png)
+![](docs/image04.png)
