@@ -22,13 +22,11 @@ export const MainContainer = styled.section`
   flex-direction: column;
   align-items: stretch;
   gap: 16px;
+  height: calc(100vh - 200px);
   width: 100%;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    //justify-content: flex-start;
-    //align-items: flex-start;
     margin-left: 250px;
     padding-left: 16px;
-    //min-height: calc(100vh - 100px);
   }
 `;

@@ -8,12 +8,10 @@ export const Wrapper = styled.section`
   justify-content: space-around;
   gap: 8px 16px;
   width: 100%;
-  height: calc(100vh - 200px);
   padding: 16px 0;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     justify-content: flex-start;
     gap: 16px 32px;
-    height: 100%;
   }
 `;
