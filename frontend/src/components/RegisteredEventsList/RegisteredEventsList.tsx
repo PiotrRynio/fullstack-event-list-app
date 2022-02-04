@@ -8,7 +8,7 @@ import { Wrapper } from './RegisteredEventsList.styles';
 export const RegisteredEventsList = () => {
   const { registeredEvents, setRegisteredEvents } = useAppContext();
   const { data: queryData, isError, isLoading } = useRegisteredEvents();
-  const isNoResults = !!queryData && !queryData.length;
+  const isNoResults = !!registeredEvents && !registeredEvents.length;
 
   useEffect(() => {
     if (queryData) {
