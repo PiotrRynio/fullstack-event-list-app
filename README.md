@@ -70,8 +70,9 @@ Running this project locally:
 
 1. Install Install Docker & Docker Compose.
 3. Clone this project locally.
-4. Run `docker-compose -f docker-compose.yml up` (it is running Docker script) in your bash/command line (in main folder).
-5. Go to `http://localhost:3000` in your browser.
+4. Run `docker-compose -f docker-compose.yml up` (it is running Docker script) in your bash/command line (in main folder). 
+Make sure that ports 3000 and 5000 are free on your machine before.
+6. Go to `http://localhost:3000` in your browser.
 
 Running tests:
 
