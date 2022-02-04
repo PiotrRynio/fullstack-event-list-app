@@ -28,5 +28,6 @@ export const MainContainer = styled.section`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     margin-left: 250px;
     padding-left: 16px;
+    height: 100%;
   }
 `;
