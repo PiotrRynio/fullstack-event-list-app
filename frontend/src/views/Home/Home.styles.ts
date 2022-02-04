@@ -22,7 +22,7 @@ export const MainContainer = styled.section`
   flex-direction: column;
   align-items: stretch;
   gap: 16px;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 155px);
   width: 100%;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
