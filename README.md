@@ -88,7 +88,8 @@ Others:
 1. API port: 5000.
 2. MongoDB port: 27017.
 3. Node version: 16.
-4. You can start without Docker too <br/>
+4. NPM version: 8.1.2
+5. You can start without Docker too <br/>
    (You may need another steps than below ex. installing proper version of MongoDB Compass):
    1. Run `npm install` in your bash/command line (in main folder).
    2. Next `npm run start-fe` (frontend) or `npm run start-be` (backend) in your bash/command line (in main folder).
