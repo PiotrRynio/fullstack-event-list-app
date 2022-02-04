@@ -100,3 +100,14 @@ _Piotr Rynio_
 Contact:
 pwrynio@gmail.com  
 github.com/PiotrRynio/
+
+---
+
+### Images:
+
+
+
+![](frontend/readmeFiles/image01.png)
+![](frontend/readmeFiles/image02.png)
+![](frontend/readmeFiles/image03.png)
+![](frontend/readmeFiles/image04.png)
