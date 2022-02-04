@@ -68,7 +68,7 @@ Have fun with Event List!
 
 Running this project locally:
 
-1. Install Docker-Compose.
+1. Install Docker.
 3. Clone this project locally.
 4. Run `docker-compose -f docker-compose.yml up` (it is running Docker script) in your bash/command line (in main folder).
 5. Go to `http://localhost:3000` in your browser.
